@@ -1,0 +1,164 @@
+/*-----------------------------------*\
+  #style.css
+\*-----------------------------------*/
+
+:root {
+  --good-air-quality: #1f845a;
+  --fair-air-quality: #7ee2b8;
+  --moderate-air-quality: #f5cd47;
+  --poor-air-quality: #fd9891;
+  --very-poor-air-quality: #5d1f1a;
+  --extremely-poor-air-quality: #352c63;
+
+  --primary: #227d9b;
+  --secondary: #0055cc;
+  --tertiary: #1c2b41;
+}
+
+/**
+ * copyright 2023 codewithsadee
+ */
+
+/*-----------------------------------*\
+  #CUSTOM PROPERTY
+\*-----------------------------------*/
+
+#navbar {
+  background: linear-gradient(
+    to bottom,
+    var(--secondary) 20%,
+    var(--tertiary)
+  ) !important;
+}
+
+.dark-color {
+  background-color: aqua !important;
+}
+
+/*-----------------------------------*\
+        AIR QUALITY BADGE
+\*-----------------------------------*/
+
+.air-quality-good {
+  background-color: var(--good-air-quality);
+}
+.air-quality-fair {
+  background-color: var(--fair-air-quality);
+  color: black;
+}
+.air-quality-moderate {
+  background-color: var(--moderate-air-quality);
+}
+.air-quality-poor {
+  background-color: var(--poor-air-quality);
+}
+.air-quality-very-poor {
+  background-color: var(--very-poor-air-quality);
+}
+.air-quality-extremely-poor {
+  background-color: var(--extremely-poor-air-quality);
+}
+
+/*-----------------------------------*\
+  #RESET
+\*-----------------------------------*/
+
+rect {
+  pointer-events: all;
+  fill-opacity: 0;
+  stroke-opacity: 0;
+  z-index: 1;
+}
+
+#tooltip {
+  position: relative;
+  width: 5vw;
+  padding: 10px;
+  background-color: steelblue;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  opacity: 0.75;
+}
+
+.bi-cloud-drizzle {
+  width: 50px;
+}
+
+.card-body .position-absolute {
+  z-index: 1;
+}
+
+.card-body .position-relative {
+  z-index: 2;
+}
+
+.container-fluid {
+  position: relative;
+  user-select: none;
+}
+
+.edge-scroll {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  z-index: 10;
+}
+
+.edge-scroll-left {
+  left: 0;
+  cursor: pointer;
+}
+
+.edge-scroll-right {
+  right: 0;
+  cursor: pointer;
+}
+.card-previsio-horaria {
+  scroll-behavior: smooth;
+}
+
+/*-----------------------------------*\
+  #MATERIAL ICON
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  #REUSED STYLE
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  #HEADER
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  #CURRENT WEATHER
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  #HIGHLIGHTS
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  #HOURLY FORECAST
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  #FORECAST
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  #LOADING
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  #ERROR SECTION
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  #FOOTER
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
