@@ -710,15 +710,21 @@
           </div>
         </div>
 
-        <div class="dropdown mt-3">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-            Dropdown button
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <div class="row">
+          <div class="col bg-black bg-gradient mx-5 my-2 p-3 align-items-center rounded">
+            <div class="h3">See also</div>
+            <div id="search-results">
+              <div class="loader spinner-grow text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="loader spinner-grow text-secondary" role="status" style="animation-delay: 0.15s;">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="loader spinner-grow text-light" role="status" style="animation-delay: 0.33s;">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -789,5 +795,87 @@
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 <!-- <script src="./assets/js/color-modes.js"></script> -->
 <script src="../DomManipulation/main.js" type="module"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    fetch('../../Backend/scripts/getSearchResultsForLocation.php')
+      .then(response => response.json())
+      .then(data => {
+        const resultsContainer = document.getElementById('search-results');
+        resultsContainer.innerHTML = ''; // Clear loader
+        data.forEach((result, index) => {
+          const resultElement = document.createElement('div');
+          resultElement.className = 'h6';
+          resultElement.innerHTML = `<a class="h6 search-results" id="search-results-${index + 1}" href="${result.url}" target="_blank">${result.title}</a>`;
+          resultsContainer.appendChild(resultElement);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching search results:', error);
+        document.getElementById('search-results').innerHTML = '<p>Error loading search results.</p>';
+      });
+  });
+
+
+  document.getElementById('search-location-btn').addEventListener('click', function() {
+    const query = document.getElementById('searchLocation').value;
+    resetResultsContainer(); // Reset the results container
+    fetchSearchResults(query);
+  });
+
+  function resetResultsContainer() {
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = ''; // Clear the results container
+  }
+
+  function fetchSearchResults(query) {
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = ''; // Clear the results container
+    // Add spinners
+    addSpinner(resultsContainer, 'text-primary', 0);
+    addSpinner(resultsContainer, 'text-secondary', 150);
+    addSpinner(resultsContainer, 'text-light', 330);
+
+    fetch(`../../Backend/scripts/getSearchResultsForLocation.php?query=${encodeURIComponent(query)}`)
+      .then(response => response.json())
+      .then(data => {
+        // Remove spinners
+        removeSpinners(resultsContainer);
+
+        if (Array.isArray(data)) {
+          data.forEach((result, index) => {
+            const resultElement = document.createElement('div');
+            resultElement.className = 'h6';
+            resultElement.innerHTML = `<a class="h6 search-results" id="search-results-${index + 1}" href="${result.url}" target="_blank">${result.title}</a>`;
+            resultsContainer.appendChild(resultElement);
+          });
+        } else {
+          resultsContainer.innerHTML = '<p>No results found.</p>';
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching search results:', error);
+        // Remove spinners
+        removeSpinners(resultsContainer);
+        resultsContainer.innerHTML = '<p>Error loading search results.</p>';
+      });
+  }
+
+  function addSpinner(container, textColor, delay) {
+    const spinner = document.createElement('div');
+    spinner.className = `loader spinner-grow ${textColor}`;
+    spinner.setAttribute('role', 'status');
+    spinner.style.animationDelay = `${delay}ms`; // Set animation delay
+    spinner.innerHTML = '<span class="visually-hidden">Loading...</span>';
+    container.appendChild(spinner);
+  }
+
+  function removeSpinners(container) {
+    const spinners = container.querySelectorAll('.loader');
+    spinners.forEach(spinner => spinner.remove());
+  }
+</script>
+
+
 
 </html>

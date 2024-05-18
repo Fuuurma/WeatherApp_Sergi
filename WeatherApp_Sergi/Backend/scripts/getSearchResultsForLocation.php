@@ -21,18 +21,16 @@ function getTopSearchResults($query, $numResults = 3)
             $url = $node->attr('href');
             $titleNode = $node->filter('h3');
 
-            // Only process if there is an <h3> tag inside the <a> tag
             if ($titleNode->count() > 0) {
                 $title = $titleNode->text();
 
-                // Parse the real URL from the href attribute
                 if (preg_match('/\/url\?q=([^&]+)/', $url, $matches)) {
                     $url = urldecode($matches[1]);
                 }
 
                 $results[] = [
-                    'title' => $title,
-                    'url' => $url
+                    'title' => htmlspecialchars($title, ENT_QUOTES, 'UTF-8'),
+                    'url' => htmlspecialchars($url, ENT_QUOTES, 'UTF-8')
                 ];
             }
         }
@@ -41,14 +39,15 @@ function getTopSearchResults($query, $numResults = 3)
     return $results;
 }
 
-// Search for "Barcelona" and get the top 3 results
-$query = 'Formula one';
+// Prevent any output before headers
+ob_start();
+
+$query = isset($_GET['query']) ? $_GET['query'] : 'Barcelona'; // Default to 'Barcelona' if no query provided
 $topResults = getTopSearchResults($query);
 
-// Return the results as HTML
-foreach ($topResults as $index => $result) {
-    echo "<h2>Result " . ($index + 1) . ":</h2>";
-    echo "<p>Title: " . htmlspecialchars($result['title']) . "</p>";
-    echo "<p>URL: <a href=\"" . htmlspecialchars($result['url']) . "\">" . htmlspecialchars($result['url']) . "</a></p>";
-    echo "<hr>";
-}
+// Ensure no whitespace before JSON output
+header('Content-Type: application/json');
+echo json_encode($topResults);
+
+// Flush output buffer
+ob_end_flush();
