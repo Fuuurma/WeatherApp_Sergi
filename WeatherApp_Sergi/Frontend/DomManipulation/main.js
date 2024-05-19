@@ -12,15 +12,19 @@ import {
   requestLogout,
   checkLogin,
   loggedIn,
+  createUser,
 } from "./login/login.js";
 
 import {
   requestUploadPhoto,
   addFavorite,
   refreshPhotos,
+  getFavorites,
 } from "./favorites/favorites.js";
 
 import { makeCardsMoveAndBeDraggable } from "../DomManipulation/helpers/makeCardsDraggble.js";
+
+import { getWikiResults } from "../DomManipulation/wikiresults/getWikiResults.js";
 
 let targetLocation = null;
 
@@ -34,16 +38,17 @@ window.onload = () => {
     getLocation(location).then((results) => {
       refreshDashboard(results);
     });
+    const locationName = location.split(",")[0];
+    getWikiResults(locationName);
   });
 
   makeCardsMoveAndBeDraggable();
 
   // new
+  document.getElementById("login-btn").addEventListener("click", requestLogin);
+  document.getElementById("signup-btn").addEventListener("click", createUser);
   document
-    .querySelector(".button-login")
-    .addEventListener("click", requestLogin);
-  document
-    .querySelector(".boton-logout")
+    .getElementById("logout-link")
     .addEventListener("click", requestLogout);
   document
     .querySelector(".current-location-button")
@@ -63,6 +68,8 @@ window.onload = () => {
 
   //Load default data
   let result = setUserDashboard();
+  getWikiResults();
+  getFavorites();
 
   targetLocation = defaultLocation;
   setInterval(refreshDashboard(targetLocation), 5000);

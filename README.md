@@ -30,11 +30,9 @@ Lo actualizaré y corregiré (1/2 dias max) estos errores pero a dia de entrega 
 
 ## TO DO:
 
-- Actualizar la UI de los gráficos + el tooltip
 - Añadir el gráfico de precipitación. Actualmente usa dirección del viento.
 - Añadir correctamente los favorites y su búsqueda.
-- Busqueda y geoBusqueda van ok pero saltan muchos errores, dará problemas para desarrollar por encima.
 - Funcionalidad Upload Photos
 - Eliminar favorites y busqueda de favorites onClick
-- Wiki facts y Web Scrapping
+- Wiki facts
 - Update readme.

@@ -9,10 +9,10 @@
 
 <body>
 
-    <h1>Search Results for "Barcelona"</h1>
+    <h1>Search Wiki Results for "Barcelona"</h1>
 
     <?php
-    include '../../Backend/scripts/getSearchResultsForLocation.php';
+    include '../../Backend/scripts/getWikiResults.php';
     ?>
 
 </body>

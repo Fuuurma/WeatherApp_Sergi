@@ -13,35 +13,26 @@ function checkLogin() {
   };
 
   fetch("./login.php", options)
-    .then((response) => {
-      return response.text();
-    })
+    .then((response) => response.text())
     .then((data) => {
       console.log(data);
       if (data != "-1") {
         loggedIn = true;
-        document.querySelector(".boton-login").style =
-          "background-color:orange ;";
         document.querySelector(".user-menu button").disabled = false;
         document.querySelector(".user-menu button").innerHTML = data;
-        document.querySelector(".upload-photo-button").style.display = "block";
-        document.querySelector(".show-photo-button").style.display = "block";
-        return true;
+        document.getElementById("login-link").style.display = "none";
+        document.getElementById("signup-link").style.display = "none";
+        document.getElementById("welcome-user").style.display = "inline";
+        document.getElementById("user-name").innerText = data;
+        document.getElementById("logout-link").style.display = "inline";
       } else {
         loggedIn = false;
-        document.querySelector(".boton-login").style =
-          "background-color:lightblue ;";
         document.querySelector(".user-menu button").disabled = true;
         document.querySelector(".user-menu button").innerHTML = "";
-        document.querySelector(".upload-photo-button").style.display = "none";
-        document.querySelector(".show-photo-button").style.display = "none";
-        return false;
-      }
-    })
-    .then((result) => {
-      if (result) {
-        getFavorites();
-        // getPhotos()
+        document.getElementById("login-link").style.display = "inline";
+        document.getElementById("signup-link").style.display = "inline";
+        document.getElementById("welcome-user").style.display = "none";
+        document.getElementById("logout-link").style.display = "none";
       }
     })
     .catch((error) => {
@@ -49,31 +40,37 @@ function checkLogin() {
     });
 }
 
-function requestLogin(event) {
+function requestLogin() {
   console.log("logging in...");
-  // event.preventDefault()
-  let user = document.querySelector('form input[name="user"]').value;
-  let password = document.querySelector('form input[name="password"]').value;
+  let user = document.querySelector('#loginForm input[name="user"]').value;
+  let password = document.querySelector(
+    '#loginForm input[name="password"]'
+  ).value;
   const formData = new URLSearchParams();
   formData.append("user", user);
   formData.append("password", password);
   formData.append("login", true);
-  // console.log(user, ",", password)
+
   const options = {
     method: "POST",
     body: formData,
   };
 
   fetch("./login.php", options)
-    .then((response) => {
-      return response.text();
-    })
+    .then((response) => response.text())
     .then((data) => {
       console.log(data);
       if (data == "1") {
         checkLogin();
+
+        // Hide the login modal after successful login
+        const loginModal = bootstrap.Modal.getInstance(
+          document.getElementById("loginModal")
+        );
+        if (loginModal) {
+          loginModal.hide();
+        }
       }
-      $("#loginModal").modal("hide");
     })
     .catch((error) => {
       console.log(error);
@@ -91,9 +88,7 @@ function requestLogout() {
   };
 
   fetch("./login.php", options)
-    .then((response) => {
-      return response.text();
-    })
+    .then((response) => response.text())
     .then((data) => {
       console.log(data);
       checkLogin();
@@ -103,4 +98,34 @@ function requestLogout() {
     });
 }
 
-export { requestLogin, requestLogout, checkLogin, loggedIn };
+function createUser() {
+  console.log("creating user...");
+  let user = document.querySelector('#signupForm input[name="user"]').value;
+  let password = document.querySelector(
+    '#signupForm input[name="password"]'
+  ).value;
+  const formData = new URLSearchParams();
+  formData.append("user", user);
+  formData.append("password", password);
+  formData.append("signup", true);
+
+  const options = {
+    method: "POST",
+    body: formData,
+  };
+
+  fetch("./signup.php", options)
+    .then((response) => response.text())
+    .then((data) => {
+      console.log(data);
+      if (data == "1") {
+        checkLogin();
+      }
+      new bootstrap.Modal(document.getElementById("signupModal")).hide();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+export { requestLogin, requestLogout, checkLogin, loggedIn, createUser };
