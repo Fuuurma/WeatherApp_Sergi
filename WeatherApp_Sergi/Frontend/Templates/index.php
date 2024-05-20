@@ -117,7 +117,7 @@
     <div class="row mt-3 ms-3">
       <!-- LEFT SIDE CARDS -->
       <!-- BRIEFING CARDS -->
-      <div class="col-12 col-md-3 d-flex flex-column row-gap-1 justify-content-start align-items-start">
+      <div class="col-4 col-md-3 d-flex flex-column row-gap-1 justify-content-start align-items-start">
 
         <!-- Card Ara-->
         <div class="card-ara card bg-dark bg-gradient w-100 text-light mb-3">
@@ -165,126 +165,7 @@
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- AIR QUALITY -->
-        <div class="card-qualitat-aire card bg-dark bg-gradient w-100 text-light">
-          <div class="card-body d-flex flex-column">
-            <div class="d-flex flex-row justify-content-between align-items-center">
-              <span class="card-text-titol card-text">Air Quality</span>
-              <span class="" id="air-quality-index-badge"></span>
-            </div>
-            <div class="d-flex flex-row justify-content-around align-items-center">
-              <i class="card-icon bi bi-clipboard-data"></i>
-              <div class="d-flex flex-column gap-3 justify-content-between align-items-center">
-                <span class="card-text-variable card-text">PM25</span>
-                <span class="card-text-mesura card-text" id="pm-25-value"></span>
-              </div>
-              <div class="d-flex flex-column gap-3 justify-content-between align-items-center">
-                <span class="card-text-variable card-text">SO2</span>
-                <span class="card-text-mesura card-text" id="so2-value"></span>
-              </div>
-              <div class="d-flex flex-column gap-3 justify-content-between align-items-center">
-                <span class="card-text-variable card-text">NO2</span>
-                <span class="card-text-mesura card-text" id="no2-value"></span>
-              </div>
-              <div class="d-flex flex-column gap-3 justify-content-between align-items-center">
-                <span class="card-text-variable card-text">O3</span>
-                <span class="card-text-mesura card-text" id="o3-value"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SUNRISE - SUNSET -->
-        <div class="card-sol card bg-dark bg-gradient w-100 text-light">
-          <div class="card-body d-flex flex-column">
-            <div class="row">
-              <div class="col-6">
-                <div class="row">
-                  <div class="col-6 d-flex align-items-center">
-                    <i class="card-icon bi bi-brightness-high"></i>
-                  </div>
-                  <div class="col-6 d-flex flex-column">
-                    <div class="h6">Sunrise</div>
-                    <div class="h4" id="sunrise-value"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="row">
-                  <div class="col-6 d-flex align-items-center">
-                    <i class="card-icon bi bi-moon"></i>
-                  </div>
-                  <div class="col-6 d-flex flex-column">
-                    <div class="h6">Sunset</div>
-                    <div class="h4" id="sunset-value"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- Card: Humitat -->
-        <div class="card-humitat card bg-dark bg-gradient w-100 text-light">
-          <div class="card-body d-flex flex-column">
-            <div class="row">
-              <div class="col-6 d-flex flex-column align-items-center">
-                <div class="h6 card-text-titol card-text">Humidity</div>
-                <i class="card-icon bi bi-moisture bi-2x"></i>
-              </div>
-              <div class="col-6 d-flex align-items-center">
-                <div id="current-humidity-value" class="h3 card-text-mesura card-text"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card: Pressió -->
-        <div class="card-pressio card bg-dark bg-gradient w-100 text-light">
-          <div class="card-body d-flex flex-column">
-            <div class="row">
-              <div class="col-6 d-flex flex-column align-items-center">
-                <div class="h6 card-text-titol card-text">Atmospheric Pressure</div>
-                <i class="card-icon bi bi-hurricane bi-2x"></i>
-              </div>
-              <div class="col-6 d-flex align-items-center">
-                <div class="h3 card-text-mesura card-text" id="current-pressure-value"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card: Visibilitat -->
-        <div class="card-visibilitat card bg-dark bg-gradient w-100 text-light">
-          <div class="card-body d-flex flex-column">
-            <div class="row">
-              <div class="col-6 d-flex flex-column align-items-center">
-                <div class="h6 card-text-titol card-text">Rain</div>
-                <i class="card-icon bi bi-cloud-drizzle bi-2x"></i>
-              </div>
-              <div class="col-6 d-flex align-items-center">
-                <div class="h3 card-text-mesura card-text" id="max-probability-precipitation-value"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card: Sensació -->
-        <div class="card-sensacio card bg-dark bg-gradient w-100 text-light">
-          <div class="card-body d-flex flex-column">
-            <div class="row">
-              <div class="col-6 d-flex flex-column align-items-center">
-                <div class="h6 card-text-titol card-text">Wind</div>
-                <i class="card-icon bi bi-wind bi-2x"></i>
-              </div>
-              <div class="col-6 d-flex align-items-center">
-                <div id="current-wind-value" class="h3 card-text-mesura card-text"></div>
-              </div>
-            </div>
+            <button class="btn btn-secondary my-3 shadow mb-0">See favorites</button>
           </div>
         </div>
 
@@ -294,13 +175,13 @@
 
 
       <!-- RIGHT SIDE CARDS -->
-      <div class="col-12 col-md-9 d-flex flex-column justify-content-start align-items-center gap-4">
+      <div class="col-8 col-md-9 d-flex flex-column justify-content-start align-items-center gap-4">
         <div class="card-briefing container-fluid d-flex flex-row gap-2 flex-wrap justify-content-between w-100">
           <!-- Card Previsió 7 dies-->
 
 
           <div class="card-previsio-5dies card bg-dark bg-gradient text-light" id="weekly-weather-card">
-            <div class="card-body d-flex flex-column gap-2">
+            <div class="card-body d-flex flex-column gap-2 pt-0">
 
               <!-- Header -->
               <div class="d-flex flex-row justify-content-evenly align-items-center rounded-3 py-2">
@@ -386,9 +267,126 @@
           </div>
         </div>
 
+      </div>
+
+
+      <div class="row d-flex flex-row my-3">
+
+        <div class="col-12 d-flex flex-row gap-3">
+          <!-- AIR QUALITY -->
+          <div class="card-qualitat-aire card bg-dark bg-gradient w-100 text-light p-0">
+            <div class="card-body d-flex flex-column p-2">
+              <div class="d-flex flex-row justify-content-between align-items-center">
+                <span class="card-text-titol card-text ps-2">Air Quality</span>
+                <span class="" id="air-quality-index-badge"></span>
+              </div>
+              <div class="d-flex flex-row justify-content-around align-items-center">
+                <i class="card-icon bi bi-clipboard-data"></i>
+                <div class="d-flex flex-column gap-1 justify-content-between align-items-center">
+                  <span class="card-text-variable card-text">PM25</span>
+                  <span class="card-text-mesura card-text" id="pm-25-value"></span>
+                </div>
+                <div class="d-flex flex-column gap-1 justify-content-between align-items-center">
+                  <span class="card-text-variable card-text">SO2</span>
+                  <span class="card-text-mesura card-text" id="so2-value"></span>
+                </div>
+                <div class="d-flex flex-column gap-1 justify-content-between align-items-center">
+                  <span class="card-text-variable card-text">NO2</span>
+                  <span class="card-text-mesura card-text" id="no2-value"></span>
+                </div>
+                <div class="d-flex flex-column gap-1 justify-content-between align-items-center">
+                  <span class="card-text-variable card-text">O3</span>
+                  <span class="card-text-mesura card-text" id="o3-value"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUNRISE - SUNSET -->
+          <div class="card-sol card bg-dark bg-gradient w-100 text-light">
+            <div class="card-body d-flex flex-column p-2">
+              <div class="row">
+                <div class="col-12 d-flex flex-row gap-1 justify-content-center">
+                  <i class="card-icon bi bi-brightness-high"></i>
+                  <div class="h6">Sunrise</div>
+                  <i class="card-icon bi bi-moon"></i>
+                  <div class="h6">Sunset</div>
+                </div>
+                <div class="col-12 d-flex flex-row gap-5 justify-content-center">
+                  <div class="h4" id="sunrise-value"></div>
+                  <div class="h4" id="sunset-value"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Card: Humitat -->
+          <div class="card-humitat card bg-dark bg-gradient w-100 text-light">
+            <div class="card-body d-flex flex-column p-2">
+              <div class="row">
+                <div class="col-12 d-flex flex-row gap-5 justify-content-center">
+                  <div class="h6 card-text-titol card-text">Humidity</div>
+                  <i class="card-icon bi bi-moisture bi-2x"></i>
+                </div>
+                <div class="col-12 d-flex align-items-center">
+                  <div id="current-humidity-value" class="h3 card-text-mesura card-text"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Pressió -->
+          <div class="card-pressio card bg-dark bg-gradient w-100 text-light">
+            <div class="card-body d-flex flex-column p-2">
+              <div class="row">
+                <div class="col-12 d-flex flex-row gap-5 justify-content-center">
+                  <div class="h6 card-text-titol card-text">Atmospheric Pressure</div>
+                  <i class="card-icon bi bi-hurricane bi-2x"></i>
+                </div>
+                <div class="col-12 d-flex align-items-center">
+                  <div class="h3 card-text-mesura card-text" id="current-pressure-value"></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
 
+          <!-- Card: Visibilitat -->
+          <div class="card-visibilitat card bg-dark bg-gradient w-100 text-light">
+            <div class="card-body d-flex flex-column p-2">
+              <div class="row">
+                <div class="col-12 d-flex flex-row gap-5 justify-content-center">
+                  <div class="h6 card-text-titol card-text">Rain</div>
+                  <i class="card-icon bi bi-cloud-drizzle bi-2x"></i>
+                </div>
+                <div class="col-12 d-flex align-items-center">
+                  <div class="h3 card-text-mesura card-text" id="max-probability-precipitation-value"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Sensació -->
+          <div class="card-sensacio card bg-dark bg-gradient w-100 text-light">
+            <div class="card-body d-flex flex-column p-2">
+              <div class="row">
+                <div class="col-12 d-flex flex-row gap-5 justify-content-center">
+                  <div class="h6 card-text-titol card-text">Wind</div>
+                  <i class="card-icon bi bi-wind bi-2x"></i>
+                </div>
+                <div class="col-12 d-flex align-items-center">
+                  <div id="current-wind-value" class="h3 card-text-mesura card-text"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row mx-3">
         <div class="container-fluid overflow-hidden">
           <div class="card-previsio-horaria row flex-nowrap overflow-auto gap-1">
             <!-- <div
@@ -640,16 +638,19 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="row m-4 pt-5 w-75 mx-auto bg-dark rounded-3 text-light">
-        <div class="h5 m-0 p-0 pl-5 text-light" id="hourly-data-day-title"></div>
+        <div class="h3 m-0 p-0 pl-5 text-light" id="hourly-data-day-title"></div>
         <div id="temperature-chart" class="text-center m-0"></div>
         <div id="rain-chart" class="d-none text-center m-0"></div>
         <div id="wind-chart" class="d-none text-center m-0"></div>
         <div id="tooltip"></div>
-        <div class="container w-50 mx-auto mt-2">
+
+        <div class="container w-100 mx-auto mt-2 d-flex flex-nowrap align-items-center gap-2">
+          <input id="searchLocation" class="search-input form-control bg-light bg-gradient w-25" type="search" placeholder="Search" aria-label="Search" list="suggestions" autocomplete="off" tabindex="1" style="flex: 1;">
+          <button id="search-location-btn" class="search-button btn btn-light" type="submit">Search</button>
+
           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
             <input type="radio" class="btn-check" name="btnradio" id="temperature" autocomplete="off" checked />
             <label class="btn btn-outline-primary" for="temperature">Temperature</label>
@@ -660,17 +661,30 @@
             <input type="radio" class="btn-check" name="btnradio" id="wind" autocomplete="off" />
             <label class="btn btn-outline-primary" for="wind">Wind</label>
           </div>
+
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Day
+            </button>
+            <ul class="dropdown-menu">
+              <!-- Dropdown menu links -->
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Action two</a></li>
+              <li><a class="dropdown-item" href="#">Action three</a></li>
+            </ul>
+          </div>
         </div>
+
+
+
+
       </div>
 
-
-    </div>
-
-    <footer class="w-100 mt-3 text-white-50 d-flex flex-columns justify-content-around">
-      <span>ETP XAVIER CFGS DAW M6-M7 2023/2024</span>
-      <span>Dades ofertes per
-        <a target="_blank" href="https://open-meteo.com/">Open-Meteo.com</a></span>
-    </footer>
+      <footer class="w-100 mt-3 text-white-50 d-flex flex-columns justify-content-around">
+        <span>ETP XAVIER CFGS DAW M6-M7 2023/2024</span>
+        <span>Dades ofertes per
+          <a target="_blank" href="https://open-meteo.com/">Open-Meteo.com</a></span>
+      </footer>
   </main>
 
   <!-- UPLOAD PHOTO MODAL -->
