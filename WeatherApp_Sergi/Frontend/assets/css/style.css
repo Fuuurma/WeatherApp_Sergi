@@ -45,6 +45,36 @@
   --chart-text: #f0ead6;
 }
 
+/* CSS for radio button group */
+.btn-group input[type="radio"] {
+  display: none;
+}
+
+.btn-group label {
+  cursor: pointer; /* Change cursor to pointer on hover */
+  border-color: var(--chart-text);
+  color: var(--chart-text);
+}
+
+/* CSS for selected state */
+#rain:checked + label {
+  background: var(--precipitation-line-gradient);
+  color: black;
+  border-color: black;
+}
+
+#temperature:checked + label {
+  background: var(--temperature-line-gradient);
+  color: black;
+  border-color: black;
+}
+
+#wind:checked + label {
+  background: var(--wind-line-gradient);
+  color: black;
+  border-color: black;
+}
+
 /**
  * copyright 2023 codewithsadee
  */
@@ -107,12 +137,16 @@ rect {
   width: 10vw;
   padding: 10px;
   background-color: var(--tertiary);
-  color: white;
-  border: 1px solid white;
+  color: var(--chart-text);
+  border: 1px solid var(--chart-outline);
   border-radius: 10px;
   opacity: 0.75;
 }
 
+#hourly-data-day-title {
+  color: var(--chart-text);
+  opacity: 0.75;
+}
 .daily-weather-row {
   cursor: pointer;
 }

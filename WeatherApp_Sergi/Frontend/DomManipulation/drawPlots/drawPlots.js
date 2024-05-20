@@ -5,7 +5,12 @@ import {
 } from "../helpers/getMeasurementUnits.js";
 
 const drawPlot = (time, data, plotType) => {
-  let selector, plotTitle, lineColor, lineGradient, measurementUnit;
+  let selector,
+    plotTitle,
+    lineColor,
+    lineGradient,
+    measurementUnit,
+    measurementLabel;
 
   switch (plotType) {
     case "temperature":
@@ -13,6 +18,7 @@ const drawPlot = (time, data, plotType) => {
       plotTitle = "Temperature over Time";
       lineGradient = "url(#temperature-gradient)";
       measurementUnit = celsiusDegres;
+      measurementLabel = `Temperature in ${celsiusDegres()}`;
       break;
 
     case "rain":
@@ -20,7 +26,7 @@ const drawPlot = (time, data, plotType) => {
       plotTitle = "Rain over Time";
       lineGradient = "url(#precipitation-gradient)";
       measurementUnit = milliLiters;
-
+      measurementLabel = `Precipitations in ${milliLiters()}`;
       break;
 
     case "wind":
@@ -28,7 +34,7 @@ const drawPlot = (time, data, plotType) => {
       plotTitle = "Wind over Time";
       lineGradient = "url(#wind-gradient)";
       measurementUnit = windSpeed;
-
+      measurementLabel = `Wind speed in ${windSpeed()}`;
       break;
 
     default:
@@ -112,7 +118,9 @@ const drawPlot = (time, data, plotType) => {
     .attr("class", "y axis")
     .style("color", "var(--chart-outline)")
     .style("opacity", "0.75")
-    .call(d3.axisLeft(y).tickFormat(d3.format(".2f")));
+    .call(
+      d3.axisLeft(y).tickFormat((d) => `${d.toFixed(0)}${measurementUnit()}`)
+    );
 
   // Add y axis label
   svg
@@ -121,7 +129,9 @@ const drawPlot = (time, data, plotType) => {
     .attr("y", 0 - margin.left)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
-    .style("text-anchor", "middle");
+    .style("text-anchor", "middle")
+    .style("color", "var(--chart-text)");
+  // .text(measurementLabel);
 
   // Add chart title
   svg

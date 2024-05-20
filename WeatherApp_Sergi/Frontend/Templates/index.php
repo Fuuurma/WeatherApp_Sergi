@@ -387,24 +387,7 @@
         </div>
 
 
-        <div class="row">
-          <div class="col-6">
-            <div class="h5 m-0 p-0 text-light" id="hourly-data-day-title"></div>
-          </div>
 
-          <div class="col-6">
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-              <input type="radio" class="btn-check" name="btnradio" id="temperature" autocomplete="off" checked />
-              <label class="btn btn-outline-primary" for="temperature">Temperature</label>
-
-              <input type="radio" class="btn-check" name="btnradio" id="rain" autocomplete="off" />
-              <label class="btn btn-outline-primary" for="rain">Precipitation</label>
-
-              <input type="radio" class="btn-check" name="btnradio" id="wind" autocomplete="off" />
-              <label class="btn btn-outline-primary" for="wind">Wind</label>
-            </div>
-          </div>
-        </div>
 
         <div class="container-fluid overflow-hidden">
           <div class="card-previsio-horaria row flex-nowrap overflow-auto gap-1">
@@ -661,10 +644,23 @@
       </div>
 
       <div class="row m-4 pt-5 w-75 mx-auto bg-dark rounded-3 text-light">
+        <div class="h5 m-0 p-0 pl-5 text-light" id="hourly-data-day-title"></div>
         <div id="temperature-chart" class="text-center m-0"></div>
         <div id="rain-chart" class="d-none text-center m-0"></div>
         <div id="wind-chart" class="d-none text-center m-0"></div>
         <div id="tooltip"></div>
+        <div class="container w-50 mx-auto mt-2">
+          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="temperature" autocomplete="off" checked />
+            <label class="btn btn-outline-primary" for="temperature">Temperature</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="rain" autocomplete="off" />
+            <label class="btn btn-outline-primary" for="rain">Precipitation</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="wind" autocomplete="off" />
+            <label class="btn btn-outline-primary" for="wind">Wind</label>
+          </div>
+        </div>
       </div>
 
 

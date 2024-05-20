@@ -1,5 +1,5 @@
 const celsiusDegres = () => {
-  return "&#8451;";
+  return "°C";
 };
 
 const milliLiters = () => {
@@ -11,7 +11,7 @@ const windSpeed = () => {
 };
 
 const directionDegres = () => {
-  return "&#176;";
+  return "°";
 };
 
 export { celsiusDegres, milliLiters, windSpeed, directionDegres };
