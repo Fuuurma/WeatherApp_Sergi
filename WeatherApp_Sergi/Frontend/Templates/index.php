@@ -23,7 +23,7 @@
 </head>
 
 <body class="bg-black bg-gradient">
-  <div class="main-container container-fluid p-0 m-0 d-flex flex-column justify-content-between">
+  <div class="main-container container-fluid p-0 m-0 d-flex flex-column justify-content-between bg-black bg-gradient">
     <header id="navbar" class="mb-2 d-flex flex-row align-items-center justify-content-between w-100 px-5 bg-primary">
       <div class="page-logo d-flex flex-row align-items-center justify-content-between">
         <i class="page-icon bi bi-rainbow"></i>
@@ -658,15 +658,15 @@
           </div>
         </div>
 
-
-
       </div>
-      <div class="row m-4 p-4 w-75 mx-auto bg-dark rounded-3 text-light">
-        <div id="temperature-chart" class=""></div>
-        <div id="rain-chart" class="d-none"></div>
-        <div id="wind-chart" class="d-none"></div>
+
+      <div class="row m-4 pt-5 w-75 mx-auto bg-dark rounded-3 text-light">
+        <div id="temperature-chart" class="text-center m-0"></div>
+        <div id="rain-chart" class="d-none text-center m-0"></div>
+        <div id="wind-chart" class="d-none text-center m-0"></div>
         <div id="tooltip"></div>
       </div>
+
 
     </div>
 

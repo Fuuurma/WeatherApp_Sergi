@@ -1,24 +1,34 @@
-// import { select } from "d3";
-
-// import { axisBottom } from "d3";
+import {
+  celsiusDegres,
+  windSpeed,
+  milliLiters,
+} from "../helpers/getMeasurementUnits.js";
 
 const drawPlot = (time, data, plotType) => {
-  let selector, plotTitle;
+  let selector, plotTitle, lineColor, lineGradient, measurementUnit;
 
   switch (plotType) {
     case "temperature":
       selector = "#temperature-chart";
       plotTitle = "Temperature over Time";
+      lineGradient = "url(#temperature-gradient)";
+      measurementUnit = celsiusDegres;
       break;
 
     case "rain":
       selector = "#rain-chart";
       plotTitle = "Rain over Time";
+      lineGradient = "url(#precipitation-gradient)";
+      measurementUnit = milliLiters;
+
       break;
 
     case "wind":
       selector = "#wind-chart";
       plotTitle = "Wind over Time";
+      lineGradient = "url(#wind-gradient)";
+      measurementUnit = windSpeed;
+
       break;
 
     default:
@@ -29,10 +39,11 @@ const drawPlot = (time, data, plotType) => {
   d3.select(selector).select("svg").remove();
 
   const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
-  // Set up the chart dimensions
+
+  // chart dimensions
   const chartWidth = 1000;
   const chartHeight = 300;
-  const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+  const margin = { top: 40, right: 20, bottom: 30, left: 40 };
   const width = chartWidth - margin.left - margin.right;
   const height = chartHeight - margin.top - margin.bottom;
 
@@ -42,6 +53,7 @@ const drawPlot = (time, data, plotType) => {
     .append("svg")
     .attr("width", chartWidth)
     .attr("height", chartHeight)
+    .attr("class", "mx-auto d-block") // Centering the SVG element
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`)
     .attr(
@@ -64,8 +76,10 @@ const drawPlot = (time, data, plotType) => {
   }));
 
   // Set the domains
+  const minValue = d3.min(formattedData, (d) => d.value);
+  const maxValue = d3.max(formattedData, (d) => d.value);
   x.domain(d3.extent(formattedData, (d) => d.time));
-  y.domain([0, d3.max(formattedData, (d) => d.value)]);
+  y.domain([minValue * 0.9, maxValue * 1.1]);
 
   // Create the line generator
   const line = d3
@@ -73,20 +87,31 @@ const drawPlot = (time, data, plotType) => {
     .x((d) => x(d.time))
     .y((d) => y(d.value));
 
-  // Add the line path
-  svg.append("path").datum(formattedData).attr("class", "line").attr("d", line);
+  // Add the line path with gradient color and thickness
+  svg
+    .append("path")
+    .datum(formattedData)
+    .attr("class", "line")
+    .attr("d", line)
+    .attr("stroke", lineGradient)
+    .attr("stroke-width", 2)
+    .attr("fill", "none");
 
   // Add the x axis
   svg
     .append("g")
     .attr("class", "x axis")
     .attr("transform", `translate(0, ${height})`)
+    .style("color", "var(--chart-outline)")
+    .style("opacity", "0.75")
     .call(d3.axisBottom(x));
 
   // Add the y axis
   svg
     .append("g")
     .attr("class", "y axis")
+    .style("color", "var(--chart-outline)")
+    .style("opacity", "0.75")
     .call(d3.axisLeft(y).tickFormat(d3.format(".2f")));
 
   // Add y axis label
@@ -101,22 +126,28 @@ const drawPlot = (time, data, plotType) => {
   // Add chart title
   svg
     .append("text")
-    .attr("class", "title")
+    .attr("class", "h3 m-2")
     .attr("x", width / 2)
     .attr("y", -margin.top / 2)
     .style("text-anchor", "middle")
+    .style("fill", "var(--chart-text)")
+    .style("opacity", "0.75")
     .text(plotTitle);
 
   // Add gridlines
   const gridlines = svg
     .append("g")
     .attr("class", "grid")
+    .style("color", "var(--chart-outline)")
+    .style("opacity", "0.25")
     .call(d3.axisLeft().scale(y).tickSize(-width, 0, 0).tickFormat(""));
 
   svg
     .append("g")
     .attr("class", "grid")
     .attr("transform", `translate(0, ${height})`)
+    .style("color", "var(--chart-outline)")
+    .style("opacity", "0.25")
     .call(d3.axisBottom().scale(x).tickSize(-height, 0, 0).tickFormat(""));
 
   // Add circles
@@ -129,19 +160,6 @@ const drawPlot = (time, data, plotType) => {
     .attr("cx", (d) => x(d.time))
     .attr("cy", (d) => y(d.value))
     .attr("r", 5);
-
-  // Add tooltip and mouseover/mouseout functions
-  circles
-    .on("mouseover", (event, d) => {
-      tooltip
-        .html(`${d.time.toLocaleDateString()}<br>${d.value}`)
-        .style("opacity", 1)
-        .style("left", event.pageX + 10 + "px")
-        .style("top", event.pageY - 20 + "px");
-    })
-    .on("mouseout", () => {
-      tooltip.style("opacity", 0);
-    });
 
   // Add listening rectangle
   const listeningRect = svg
@@ -171,8 +189,13 @@ const drawPlot = (time, data, plotType) => {
       .style("left", `${xPos}px`)
       .style("top", `calc(${yPos}px - 250px)`)
       .html(
-        `<strong>Date:</strong> ${d.time.toLocaleDateString()}<br><strong>Value:</strong> ${
-          d.value !== undefined ? d.value.toFixed(1) : "N/A"
+        `<strong>Date:</strong> ${d.time.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}<br><strong>Value:</strong> ${
+          d.value !== undefined
+            ? `${d.value.toFixed(1)}${measurementUnit()}`
+            : "N/A"
         }`
       );
   });
@@ -180,7 +203,7 @@ const drawPlot = (time, data, plotType) => {
   // listening rectangle mouse leave function
   svg.on("mouseleave", function () {
     circles.transition().duration(50).attr("r", 0);
-    tooltip.style("display", "none");
+    tooltip.style("opacity", 0);
   });
 };
 
@@ -207,100 +230,163 @@ const togglePlots = () => {
   });
 };
 
-let drawTemperaturePlot = (time, temperatures) => {
-  const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
-  // Set up the chart dimensions
-  const chartWidth = 1000;
-  const chartHeight = 300;
-  const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-  const width = chartWidth - margin.left - margin.right;
-  const height = chartHeight - margin.top - margin.bottom;
-
-  // Create the SVG element
+// Define gradients once in your script, outside of the drawPlot function
+const defineGradients = () => {
   const svg = d3
-    .select("#chart")
+    .select("body")
     .append("svg")
-    .attr("width", chartWidth)
-    .attr("height", chartHeight)
-    .append("g")
-    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+    .attr("width", 0)
+    .attr("height", 0);
 
-  // Create the scales
-  const x = d3.scaleTime().range([0, width]);
-  const y = d3.scaleLinear().range([height, 0]);
-  return;
+  svg
+    .append("defs")
+    .append("linearGradient")
+    .attr("id", "temperature-gradient")
+    .attr("x1", "0%")
+    .attr("y1", "0%")
+    .attr("x2", "100%")
+    .attr("y2", "0%")
+    .selectAll("stop")
+    .data([
+      { offset: "0%", color: "#ff8c00" },
+      { offset: "100%", color: "#ffd700" },
+    ])
+    .enter()
+    .append("stop")
+    .attr("offset", (d) => d.offset)
+    .attr("stop-color", (d) => d.color);
+
+  svg
+    .append("defs")
+    .append("linearGradient")
+    .attr("id", "precipitation-gradient")
+    .attr("x1", "0%")
+    .attr("y1", "0%")
+    .attr("x2", "100%")
+    .attr("y2", "0%")
+    .selectAll("stop")
+    .data([
+      { offset: "0%", color: "#4a90e2" },
+      { offset: "100%", color: "#87cefa" },
+    ])
+    .enter()
+    .append("stop")
+    .attr("offset", (d) => d.offset)
+    .attr("stop-color", (d) => d.color);
+
+  svg
+    .append("defs")
+    .append("linearGradient")
+    .attr("id", "wind-gradient")
+    .attr("x1", "0%")
+    .attr("y1", "0%")
+    .attr("x2", "100%")
+    .attr("y2", "0%")
+    .selectAll("stop")
+    .data([
+      { offset: "0%", color: "#6b6b66" },
+      { offset: "100%", color: "#d3d3d3" },
+    ])
+    .enter()
+    .append("stop")
+    .attr("offset", (d) => d.offset)
+    .attr("stop-color", (d) => d.color);
 };
 
-let drawSurfacePressurePlot = (time, pressure) => {
-  const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
-  // Set up the chart dimensions
-  const chartWidth = 1000;
-  const chartHeight = 300;
-  const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-  const width = chartWidth - margin.left - margin.right;
-  const height = chartHeight - margin.top - margin.bottom;
+// let drawTemperaturePlot = (time, temperatures) => {
+//   const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
+//   // Set up the chart dimensions
+//   const chartWidth = 1000;
+//   const chartHeight = 300;
+//   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+//   const width = chartWidth - margin.left - margin.right;
+//   const height = chartHeight - margin.top - margin.bottom;
 
-  // Create the SVG element
-  const svg = d3
-    .select("#chart")
-    .append("svg")
-    .attr("width", chartWidth)
-    .attr("height", chartHeight)
-    .append("g")
-    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+//   // Create the SVG element
+//   const svg = d3
+//     .select("#chart")
+//     .append("svg")
+//     .attr("width", chartWidth)
+//     .attr("height", chartHeight)
+//     .append("g")
+//     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-  // Create the scales
-  const x = d3.scaleTime().range([0, width]);
-  const y = d3.scaleLinear().range([height, 0]);
-  return;
-};
+//   // Create the scales
+//   const x = d3.scaleTime().range([0, width]);
+//   const y = d3.scaleLinear().range([height, 0]);
+//   return;
+// };
 
-let drawPrecipitationPlot = (time, precipitation) => {
-  const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
-  // Set up the chart dimensions
-  const chartWidth = 1000;
-  const chartHeight = 300;
-  const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-  const width = chartWidth - margin.left - margin.right;
-  const height = chartHeight - margin.top - margin.bottom;
+// let drawSurfacePressurePlot = (time, pressure) => {
+//   const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
+//   // Set up the chart dimensions
+//   const chartWidth = 1000;
+//   const chartHeight = 300;
+//   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+//   const width = chartWidth - margin.left - margin.right;
+//   const height = chartHeight - margin.top - margin.bottom;
 
-  // Create the SVG element
-  const svg = d3
-    .select("#chart")
-    .append("svg")
-    .attr("width", chartWidth)
-    .attr("height", chartHeight)
-    .append("g")
-    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+//   // Create the SVG element
+//   const svg = d3
+//     .select("#chart")
+//     .append("svg")
+//     .attr("width", chartWidth)
+//     .attr("height", chartHeight)
+//     .append("g")
+//     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-  // Create the scales
-  const x = d3.scaleTime().range([0, width]);
-  const y = d3.scaleLinear().range([height, 0]);
-  return;
-};
+//   // Create the scales
+//   const x = d3.scaleTime().range([0, width]);
+//   const y = d3.scaleLinear().range([height, 0]);
+//   return;
+// };
 
-let drawWindSpeedPlot = (time, windSpeed) => {
-  const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
-  // Set up the chart dimensions
-  const chartWidth = 1000;
-  const chartHeight = 300;
-  const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-  const width = chartWidth - margin.left - margin.right;
-  const height = chartHeight - margin.top - margin.bottom;
+// let drawPrecipitationPlot = (time, precipitation) => {
+//   const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
+//   // Set up the chart dimensions
+//   const chartWidth = 1000;
+//   const chartHeight = 300;
+//   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+//   const width = chartWidth - margin.left - margin.right;
+//   const height = chartHeight - margin.top - margin.bottom;
 
-  // Create the SVG element
-  const svg = d3
-    .select("#chart")
-    .append("svg")
-    .attr("width", chartWidth)
-    .attr("height", chartHeight)
-    .append("g")
-    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+//   // Create the SVG element
+//   const svg = d3
+//     .select("#chart")
+//     .append("svg")
+//     .attr("width", chartWidth)
+//     .attr("height", chartHeight)
+//     .append("g")
+//     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-  // Create the scales
-  const x = d3.scaleTime().range([0, width]);
-  const y = d3.scaleLinear().range([height, 0]);
-  return;
-};
+//   // Create the scales
+//   const x = d3.scaleTime().range([0, width]);
+//   const y = d3.scaleLinear().range([height, 0]);
+//   return;
+// };
 
-export { drawPlot, togglePlots };
+// let drawWindSpeedPlot = (time, windSpeed) => {
+//   const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
+//   // Set up the chart dimensions
+//   const chartWidth = 1000;
+//   const chartHeight = 300;
+//   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+//   const width = chartWidth - margin.left - margin.right;
+//   const height = chartHeight - margin.top - margin.bottom;
+
+//   // Create the SVG element
+//   const svg = d3
+//     .select("#chart")
+//     .append("svg")
+//     .attr("width", chartWidth)
+//     .attr("height", chartHeight)
+//     .append("g")
+//     .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+//   // Create the scales
+//   const x = d3.scaleTime().range([0, width]);
+//   const y = d3.scaleLinear().range([height, 0]);
+//   return;
+// };
+
+export { drawPlot, togglePlots, defineGradients };

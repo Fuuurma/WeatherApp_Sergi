@@ -4,7 +4,7 @@ import {
   reverseGeocoding,
   defaultLocation,
 } from "./locations.js";
-
+import { defineGradients } from "./drawPlots/drawPlots.js";
 import { fetchMeteo } from "./meteoApi.js";
 import { manipulateData, updateLocationTitle } from "./manipulateData.js";
 import {
@@ -42,6 +42,7 @@ window.onload = () => {
     getWikiResults(locationName);
   });
 
+  defineGradients();
   makeCardsMoveAndBeDraggable();
 
   // new

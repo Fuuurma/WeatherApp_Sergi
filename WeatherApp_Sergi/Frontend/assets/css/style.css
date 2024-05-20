@@ -13,6 +13,36 @@
   --primary: #227d9b;
   --secondary: #0055cc;
   --tertiary: #1c2b41;
+
+  /* Chart Colors */
+  --temperature-line-chart-start: #ff8c00;
+  --temperature-line-chart-end: #ffd700;
+
+  --precipitation-line-chart-start: #4a90e2;
+  --precipitation-line-chart-end: #87cefa;
+
+  --wind-line-chart-start: #6b6b66;
+  --wind-line-chart-end: #d3d3d3;
+
+  /* Gradient Definitions */
+  --temperature-line-gradient: linear-gradient(
+    to right,
+    var(--temperature-line-chart-start),
+    var(--temperature-line-chart-end)
+  );
+  --precipitation-line-gradient: linear-gradient(
+    to right,
+    var(--precipitation-line-chart-start),
+    var(--precipitation-line-chart-end)
+  );
+  --wind-line-gradient: linear-gradient(
+    to right,
+    var(--wind-line-chart-start),
+    var(--wind-line-chart-end)
+  );
+
+  --chart-outline: #f9f6ee;
+  --chart-text: #f0ead6;
 }
 
 /**

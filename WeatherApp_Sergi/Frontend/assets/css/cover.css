@@ -84,7 +84,7 @@
 }
 
 .bi {
-  vertical-align: -0.125em;
+  /* vertical-align: -0.125em; */
   fill: currentColor;
 }
 
@@ -151,11 +151,11 @@
 
 body {
   font-family: "Material Symbol";
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .main-container {
-  min-height: 100%;
+  /* min-height: 100%; */
 }
 
 /* CARD-ARA i CARD-PREVISIO-5DIES */
@@ -206,8 +206,6 @@ body {
 
 .line {
   fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
 }
 
 /* Mis estilos extra */
