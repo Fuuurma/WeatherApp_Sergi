@@ -23,7 +23,7 @@
 </head>
 
 <body class="bg-black bg-gradient">
-  <div class="main-container container-fluid p-0 m-0 d-flex flex-column justify-content-between bg-black bg-gradient">
+  <div class="main-container container-fluid p-0 m-0 d-flex flex-column justify-content-between">
     <header id="navbar" class="mb-2 d-flex flex-row align-items-center justify-content-between w-100 px-5 bg-primary">
       <div class="page-logo d-flex flex-row align-items-center justify-content-between">
         <i class="page-icon bi bi-rainbow"></i>
@@ -707,9 +707,9 @@
 
   <!-- OFFCANVAS INTERESTING FACTS LOCATION-->
   <div class="offcanvas offcanvas-start w-25" tabindex="-2" id="off-canvas-facts" aria-labelledby="off-canvas-facts" data-bs-theme="dark">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title bg-black bg-gradient mx-5 my-2 p-3 rounded" id="off-canvas-title">BARCELONA</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div class="offcanvas-header mb-0">
+      <h5 class="offcanvas-title bg-black bg-gradient mx-5 mb-2 p-3 rounded" id="off-canvas-title"></h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" tabindex="1"></button>
     </div>
     <div class="offcanvas-body">
       <div id="facts-container" class="row">
