@@ -1,5 +1,5 @@
 import { variables, imageVariables } from "../maps/maps.js";
-import { checkLogin } from "../login/login.js";
+import { checkLogin } from "../auth/login.js";
 
 async function setUserDashboard() {
   checkLogin();

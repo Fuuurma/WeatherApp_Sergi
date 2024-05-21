@@ -13,7 +13,7 @@ import {
   checkLogin,
   loggedIn,
   createUser,
-} from "./login/login.js";
+} from "./auth/login.js";
 
 import {
   requestUploadPhoto,
@@ -25,6 +25,7 @@ import {
 import { makeCardsMoveAndBeDraggable } from "../DomManipulation/helpers/makeCardsDraggble.js";
 
 import { getWikiResults } from "../DomManipulation/wikiresults/getWikiResults.js";
+import { signUpNewUser } from "../DomManipulation/auth/signUp.js";
 
 let targetLocation = null;
 
@@ -47,7 +48,11 @@ window.onload = () => {
 
   // new
   document.getElementById("login-btn").addEventListener("click", requestLogin);
-  document.getElementById("signup-btn").addEventListener("click", createUser);
+  // document.getElementById("signup-btn").addEventListener("click", createUser);
+  document
+    .getElementById("signup-btn")
+    .addEventListener("click", signUpNewUser);
+
   document
     .getElementById("logout-link")
     .addEventListener("click", requestLogout);
