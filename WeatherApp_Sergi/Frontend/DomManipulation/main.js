@@ -26,8 +26,14 @@ import { makeCardsMoveAndBeDraggable } from "../DomManipulation/helpers/makeCard
 
 import { getWikiResults } from "../DomManipulation/wikiresults/getWikiResults.js";
 import { signUpNewUser } from "../DomManipulation/auth/signUp.js";
+import {
+  getGoogleResultsLocation,
+  getGoogleResultsTemplate,
+} from "../DomManipulation/googleResults/getGoogleResults.js";
 
 let targetLocation = null;
+
+document.addEventListener("DOMContentLoaded", getGoogleResultsTemplate);
 
 window.onload = () => {
   const searchInput = document.querySelector("#searchLocation");
@@ -41,6 +47,7 @@ window.onload = () => {
     });
     const locationName = location.split(",")[0];
     getWikiResults(locationName);
+    getGoogleResultsLocation(location);
   });
 
   defineGradients();
