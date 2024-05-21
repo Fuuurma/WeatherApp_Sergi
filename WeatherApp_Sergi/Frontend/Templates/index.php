@@ -180,7 +180,6 @@
         <div class="card-briefing container-fluid d-flex flex-row gap-2 flex-wrap justify-content-between w-100">
           <!-- Card Previsió 7 dies-->
 
-
           <div class="card-previsio-5dies card bg-dark bg-gradient text-light" id="weekly-weather-card">
             <div class="card-body d-flex flex-column gap-2 pt-0">
 
@@ -195,74 +194,166 @@
               </div>
 
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <img src="" class="card-img card-img-top" alt="..." />
-                <span class="card-text-temp card-text text-start"></span>
-                <span class="card-text-data card-text text-start"></span>
-                <span class="card-rain card-text text-light text-start"></span>
-                <span class="card-wind card-text text-light text-start"></span>
-                <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
-                  <i class="bi bi-eye"></i>
-                </button>
+                <div class="col-2">
+                  <img src="" class="card-img card-img-top" alt="..." />
+                </div>
+                <div class="col-2">
+                  <span class="card-text-temp card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-text-data card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-rain card-text text-light text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-wind card-text text-light text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
               </div>
+
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <img src="" class="card-img card-img-top" alt="..." />
-                <span class="card-text-temp card-text text-start"></span>
-                <span class="card-text-data card-text text-start"></span>
-                <span class="card-rain card-text text-light text-start"></span>
-                <span class="card-wind card-text text-light text-start"></span>
-                <button class="btn btn-light btn-sm see-hourly-data" data-day-order="1">
-                  <i class="bi bi-eye"></i>
-                </button>
+                <div class="col-2 d-flex flex-end">
+                  <img src="" class="card-img card-img-top" alt="..." />
+                </div>
+                <div class="col-2">
+                  <span class="card-text-temp card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-text-data card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-rain card-text text-light text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-wind card-text text-light text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
               </div>
+
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <img src="" class="card-img card-img-top" alt="..." />
-                <span class="card-text-temp card-text"></span>
-                <span class="card-text-data card-text"></span>
-                <span class="card-rain card-text text-light"></span>
-                <span class="card-wind card-text text-light"></span>
-                <button class="btn btn-light btn-sm see-hourly-data" data-day-order="2">
-                  <i class="bi bi-eye"></i>
-                </button>
+                <div class="col-2">
+                  <img src="" class="card-img card-img-top" alt="..." />
+                </div>
+                <div class="col-2">
+                  <span class="card-text-temp card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-text-data card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-rain card-text text-light text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-wind card-text text-light text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
               </div>
+
+
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <img src="" class="card-img card-img-top" alt="..." />
-                <span class="card-text-temp card-text"></span>
-                <span class="card-text-data card-text"></span>
-                <span class="card-rain card-text text-light"></span>
-                <span class="card-wind card-text text-light"></span>
-                <button class="btn btn-light btn-sm see-hourly-data" data-day-order="3">
-                  <i class="bi bi-eye"></i>
-                </button>
+                <div class="col-2">
+                  <img src="" class="card-img card-img-top" alt="..." />
+                </div>
+                <div class="col-2">
+                  <span class="card-text-temp card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-text-data card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-rain card-text text-light text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-wind card-text text-light text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
               </div>
+
+
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <img src="" class="card-img card-img-top" alt="..." />
-                <span class="card-text-temp card-text"></span>
-                <span class="card-text-data card-text"></span>
-                <span class="card-rain card-text text-light"></span>
-                <span class="card-wind card-text text-light"></span>
-                <button class="btn btn-light btn-sm see-hourly-data" data-day-order="4">
-                  <i class="bi bi-eye"></i>
-                </button>
+                <div class="col-2">
+                  <img src="" class="card-img card-img-top" alt="..." />
+                </div>
+                <div class="col-2">
+                  <span class="card-text-temp card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-text-data card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-rain card-text text-light text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-wind card-text text-light text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
               </div>
+
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <img src="" class="card-img card-img-top" alt="..." />
-                <span class="card-text-temp card-text"></span>
-                <span class="card-text-data card-text"></span>
-                <span class="card-rain card-text text-light"></span>
-                <span class="card-wind card-text text-light"></span>
-                <button class="btn btn-light btn-sm see-hourly-data" data-day-order="5">
-                  <i class="bi bi-eye"></i>
-                </button>
+                <div class="col-2">
+                  <img src="" class="card-img card-img-top" alt="..." />
+                </div>
+                <div class="col-2">
+                  <span class="card-text-temp card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-text-data card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-rain card-text text-light text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-wind card-text text-light text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
               </div>
+
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <img src="" class="card-img card-img-top" alt="..." />
-                <span class="card-text-temp card-text"></span>
-                <span class="card-text-data card-text"></span>
-                <span class="card-rain card-text text-light"></span>
-                <span class="card-wind card-text text-light"></span>
-                <button class="btn btn-light btn-sm see-hourly-data" data-day-order="6">
-                  <i class="bi bi-eye"></i>
-                </button>
+                <div class="col-2">
+                  <img src="" class="card-img card-img-top" alt="..." />
+                </div>
+                <div class="col-2">
+                  <span class="card-text-temp card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-text-data card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-rain card-text text-light text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-wind card-text text-light text-start"></span>
+                </div>
+                <div class="col-2d-flex justify-content-center">
+                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -307,13 +398,13 @@
           <div class="card-sol card bg-dark bg-gradient w-100 text-light">
             <div class="card-body d-flex flex-column p-2">
               <div class="row">
-                <div class="col-12 d-flex flex-row gap-1 justify-content-center">
+                <div class="col-12 d-flex flex-row gap-3 justify-content-around">
                   <i class="card-icon bi bi-brightness-high"></i>
                   <div class="h6">Sunrise</div>
                   <i class="card-icon bi bi-moon"></i>
                   <div class="h6">Sunset</div>
                 </div>
-                <div class="col-12 d-flex flex-row gap-5 justify-content-center">
+                <div class="col-12 d-flex flex-row gap-5 justify-content-center align-items-center">
                   <div class="h4" id="sunrise-value"></div>
                   <div class="h4" id="sunset-value"></div>
                 </div>
@@ -330,7 +421,7 @@
                   <div class="h6 card-text-titol card-text">Humidity</div>
                   <i class="card-icon bi bi-moisture bi-2x"></i>
                 </div>
-                <div class="col-12 d-flex align-items-center">
+                <div class="col-12 d-flex justify-content-center">
                   <div id="current-humidity-value" class="h3 card-text-mesura card-text"></div>
                 </div>
               </div>
@@ -345,7 +436,7 @@
                   <div class="h6 card-text-titol card-text">Atmospheric Pressure</div>
                   <i class="card-icon bi bi-hurricane bi-2x"></i>
                 </div>
-                <div class="col-12 d-flex align-items-center">
+                <div class="col-12 d-flex justify-content-center">
                   <div class="h3 card-text-mesura card-text" id="current-pressure-value"></div>
                 </div>
               </div>
@@ -362,7 +453,7 @@
                   <div class="h6 card-text-titol card-text">Rain</div>
                   <i class="card-icon bi bi-cloud-drizzle bi-2x"></i>
                 </div>
-                <div class="col-12 d-flex align-items-center">
+                <div class="col-12 d-flex justify-content-center">
                   <div class="h3 card-text-mesura card-text" id="max-probability-precipitation-value"></div>
                 </div>
               </div>
@@ -377,7 +468,7 @@
                   <div class="h6 card-text-titol card-text">Wind</div>
                   <i class="card-icon bi bi-wind bi-2x"></i>
                 </div>
-                <div class="col-12 d-flex align-items-center">
+                <div class="col-12 d-flex justify-content-center">
                   <div id="current-wind-value" class="h3 card-text-mesura card-text"></div>
                 </div>
               </div>
