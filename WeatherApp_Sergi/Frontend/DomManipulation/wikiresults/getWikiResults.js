@@ -39,7 +39,7 @@ let getWikiResults = (location) => {
 
       const factDiv = document.createElement("div");
       factDiv.className =
-        "col bg-black bg-gradient mx-5 my-2 p-3 align-items-center rounded truncated-text";
+        "col bg-dark mx-5 my-2 p-3 align-items-center rounded truncated-text";
       factsContainer.appendChild(factDiv);
 
       sentences.forEach((sentence) => {

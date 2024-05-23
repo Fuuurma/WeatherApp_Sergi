@@ -19,7 +19,7 @@ function checkLogin() {
       if (data != "-1") {
         loggedIn = true;
         document.querySelector(".user-menu button").disabled = false;
-        document.querySelector(".user-menu button").innerHTML = data;
+        // document.querySelector(".user-menu button").innerHTML = data;
         document.getElementById("login-link").style.display = "none";
         document.getElementById("signup-link").style.display = "none";
         document.getElementById("welcome-user").style.display = "inline";
@@ -28,7 +28,7 @@ function checkLogin() {
       } else {
         loggedIn = false;
         document.querySelector(".user-menu button").disabled = true;
-        document.querySelector(".user-menu button").innerHTML = "";
+        // document.querySelector(".user-menu button").innerHTML = "";
         document.getElementById("login-link").style.display = "inline";
         document.getElementById("signup-link").style.display = "inline";
         document.getElementById("welcome-user").style.display = "none";
