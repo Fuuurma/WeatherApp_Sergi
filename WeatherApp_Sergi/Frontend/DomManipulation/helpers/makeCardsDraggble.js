@@ -33,11 +33,19 @@ let makeCardsMoveAndBeDraggable = () => {
 
   // Edge scrolling functionality
   const edgeScrollLeft = document.createElement("div");
-  edgeScrollLeft.className = "edge-scroll edge-scroll-left";
+  edgeScrollLeft.className =
+    "edge-scroll edge-scroll-left d-flex justify-content-center align-items-center";
+  const leftArrowicon = document.createElement("i");
+  leftArrowicon.className = "bi bi-arrow-left-circle-fill icon-style";
+  edgeScrollLeft.appendChild(leftArrowicon);
   container.parentElement.appendChild(edgeScrollLeft);
 
   const edgeScrollRight = document.createElement("div");
-  edgeScrollRight.className = "edge-scroll edge-scroll-right";
+  edgeScrollRight.className =
+    "edge-scroll edge-scroll-right d-flex justify-content-center align-items-center";
+  const rightArrowicon = document.createElement("i");
+  rightArrowicon.className = "bi bi-arrow-right-circle-fill icon-style";
+  edgeScrollRight.appendChild(rightArrowicon);
   container.parentElement.appendChild(edgeScrollRight);
 
   let scrollInterval;

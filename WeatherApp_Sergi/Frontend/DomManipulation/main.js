@@ -5,6 +5,7 @@ import {
   defaultLocation,
 } from "./locations.js";
 import { defineGradients } from "./drawPlots/drawPlots.js";
+import { focusWindowOnChart } from "./drawPlots/focusOnChart.js";
 import { fetchMeteo } from "./meteoApi.js";
 import { manipulateData, updateLocationTitle } from "./manipulateData.js";
 import {
@@ -48,6 +49,21 @@ window.onload = () => {
     const locationName = location.split(",")[0];
     getWikiResults(locationName);
     getGoogleResultsLocation(location);
+  });
+
+  const chartSearchInput = document.querySelector("#chart-searchLocation");
+  chartSearchInput.addEventListener("input", refreshSuggestions);
+  const chartSearchBtn = document.querySelector("#chart-search-location-btn");
+  chartSearchBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const location = chartSearchInput.value;
+    getLocation(location).then((results) => {
+      refreshDashboard(results);
+    });
+    const locationName = location.split(",")[0];
+    getWikiResults(locationName);
+    getGoogleResultsLocation(location);
+    focusWindowOnChart();
   });
 
   defineGradients();

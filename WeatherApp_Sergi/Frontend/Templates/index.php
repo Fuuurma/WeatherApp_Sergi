@@ -184,17 +184,17 @@
             <div class="card-body d-flex flex-column gap-2 pt-0">
 
               <!-- Header -->
-              <div class="d-flex flex-row justify-content-evenly align-items-center rounded-3 py-2">
-                <div class="col-2">Weather Icon</div>
+              <div class="d-flex flex-row justify-content-evenly align-items-center rounded-3 py-2 roounded bg-dark mt-2">
+                <div class="col-2"></div>
                 <div class="col-2"> Min/Max Temp</div>
                 <div class="col-2">Date</div>
                 <div class="col-2">Precipitations</div>
                 <div class="col-2">Wind</div>
-                <div class="col-2">See more</div>
+                <div class="col-2 d-flex justify-content-center">See more</div>
               </div>
 
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
                 <div class="col-2">
@@ -217,7 +217,7 @@
               </div>
 
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <div class="col-2 d-flex flex-end">
+                <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
                 <div class="col-2">
@@ -240,31 +240,7 @@
               </div>
 
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <div class="col-2">
-                  <img src="" class="card-img card-img-top" alt="..." />
-                </div>
-                <div class="col-2">
-                  <span class="card-text-temp card-text text-start"></span>
-                </div>
-                <div class="col-2">
-                  <span class="card-text-data card-text text-start"></span>
-                </div>
-                <div class="col-2">
-                  <span class="card-rain card-text text-light text-start"></span>
-                </div>
-                <div class="col-2">
-                  <span class="card-wind card-text text-light text-start"></span>
-                </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
-                    <i class="bi bi-eye"></i>
-                  </button>
-                </div>
-              </div>
-
-
-              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <div class="col-2">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
                 <div class="col-2">
@@ -288,7 +264,31 @@
 
 
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
+                <div class="col-2 d-flex justify-content-center">
+                  <img src="" class="card-img card-img-top" alt="..." />
+                </div>
                 <div class="col-2">
+                  <span class="card-text-temp card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-text-data card-text text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-rain card-text text-light text-start"></span>
+                </div>
+                <div class="col-2">
+                  <span class="card-wind card-text text-light text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+
+              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
+                <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
                 <div class="col-2">
@@ -311,7 +311,7 @@
               </div>
 
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
                 <div class="col-2">
@@ -334,7 +334,7 @@
               </div>
 
               <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
                 <div class="col-2">
@@ -349,7 +349,7 @@
                 <div class="col-2">
                   <span class="card-wind card-text text-light text-start"></span>
                 </div>
-                <div class="col-2d-flex justify-content-center">
+                <div class="col-2 d-flex justify-content-center">
                   <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
                     <i class="bi bi-eye"></i>
                   </button>
@@ -478,7 +478,7 @@
         </div>
       </div>
 
-      <div class="row mx-3">
+      <div class="row">
         <div class="container-fluid overflow-hidden">
           <div class="card-previsio-horaria row flex-nowrap overflow-auto gap-1">
             <!-- <div
@@ -732,42 +732,45 @@
         </div>
       </div>
 
-      <div class="row m-4 pt-5 w-75 mx-auto bg-dark rounded-3 text-light">
-        <div class="h3 m-0 p-0 pl-5 text-light" id="hourly-data-day-title"></div>
-        <div id="temperature-chart" class="text-center m-0"></div>
-        <div id="rain-chart" class="d-none text-center m-0"></div>
-        <div id="wind-chart" class="d-none text-center m-0"></div>
-        <div id="tooltip"></div>
+      <div class="row m-4 w-75 mx-auto bg-dark rounded-3 text-light" id="chart-container">
+        <div class="container w-100 mx-auto mt-4 mb-2">
+          <div class="row d-flex flex-nowrap align-items-center gap-2">
+            <div class="col-7 d-flex gap-2">
+              <input id="chart-searchLocation" class="search-input form-control bg-light bg-gradient w-75" type="search" placeholder="Search" aria-label="Search" list="suggestions" autocomplete="off" tabindex="1" style="flex: 1;">
+              <button id="chart-search-location-btn" class="search-button btn btn-light" type="submit">Search</button>
+            </div>
 
-        <div class="container w-100 mx-auto mt-2 d-flex flex-nowrap align-items-center gap-2">
-          <input id="searchLocation" class="search-input form-control bg-light bg-gradient w-25" type="search" placeholder="Search" aria-label="Search" list="suggestions" autocomplete="off" tabindex="1" style="flex: 1;">
-          <button id="search-location-btn" class="search-button btn btn-light" type="submit">Search</button>
+            <div class="col-5 d-flex gap-3 ">
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="temperature" autocomplete="off" checked />
+                <label class="btn btn-outline-primary" for="temperature">Temperature</label>
 
-          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="btnradio" id="temperature" autocomplete="off" checked />
-            <label class="btn btn-outline-primary" for="temperature">Temperature</label>
+                <input type="radio" class="btn-check" name="btnradio" id="rain" autocomplete="off" />
+                <label class="btn btn-outline-primary" for="rain">Precipitation</label>
 
-            <input type="radio" class="btn-check" name="btnradio" id="rain" autocomplete="off" />
-            <label class="btn btn-outline-primary" for="rain">Precipitation</label>
+                <input type="radio" class="btn-check" name="btnradio" id="wind" autocomplete="off" />
+                <label class="btn btn-outline-primary" for="wind">Wind</label>
+              </div>
 
-            <input type="radio" class="btn-check" name="btnradio" id="wind" autocomplete="off" />
-            <label class="btn btn-outline-primary" for="wind">Wind</label>
+              <div class="btn-group dropup">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Day
+                </button>
+                <ul class="dropdown-menu">
+                  <!-- Dropdown menu links -->
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Action two</a></li>
+                  <li><a class="dropdown-item" href="#">Action three</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
-
-          <div class="btn-group dropup">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              Day
-            </button>
-            <ul class="dropdown-menu">
-              <!-- Dropdown menu links -->
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Action two</a></li>
-              <li><a class="dropdown-item" href="#">Action three</a></li>
-            </ul>
-          </div>
+          <div class="h3 m-0 p-0 pl-5 text-light" id="hourly-data-day-title"></div>
+          <div id="temperature-chart" class="text-center m-0"></div>
+          <div id="rain-chart" class="d-none text-center m-0"></div>
+          <div id="wind-chart" class="d-none text-center m-0"></div>
+          <div id="tooltip"></div>
         </div>
-
-
 
 
       </div>
@@ -808,20 +811,19 @@
   </div>
 
   <!-- OFFCANVAS INTERESTING FACTS LOCATION-->
-  <div class="offcanvas offcanvas-start w-25" tabindex="-2" id="off-canvas-facts" aria-labelledby="off-canvas-facts" data-bs-theme="dark">
-    <div class="offcanvas-header mb-0">
+  <div class="offcanvas offcanvas-start w-25 d-flex flex-column" tabindex="-2" id="off-canvas-facts" aria-labelledby="off-canvas-facts" data-bs-theme="dark">
+    <div class="offcanvas-header mb-0 flex-shrink-0">
       <h5 class="offcanvas-title bg-black bg-gradient mx-5 mb-2 p-3 rounded" id="off-canvas-title"></h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" tabindex="1"></button>
     </div>
-    <div class="offcanvas-body">
-      <div id="facts-container" class="row">
+    <div class="offcanvas-body d-flex flex-column flex-grow-1 p-0">
+      <div id="facts-container" class="flex-grow-1 overflow-auto p-3">
         <!-- Facts will be injected here -->
       </div>
-
-      <div class="row">
+      <div class="flex-grow-1 d-flex flex-column">
         <div class="col bg-black bg-gradient mx-5 my-2 p-3 align-items-center rounded">
           <div class="h3">See also</div>
-          <div id="search-results">
+          <div id="search-results" class="overflow-auto">
             <div class="loader spinner-grow text-primary" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
@@ -836,6 +838,7 @@
       </div>
     </div>
   </div>
+
 
 
   <!-- OFFCANVAS  PHOTO DISPLAY-->

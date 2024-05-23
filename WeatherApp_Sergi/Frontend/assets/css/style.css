@@ -168,12 +168,28 @@ rect {
   user-select: none;
 }
 
-.edge-scroll {
+/* .edge-scroll {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 50px;
   z-index: 10;
+} */
+
+.icon-style {
+  font-size: 2rem;
+  color: var(--chart-text);
+}
+
+.edge-scroll {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Ensures the container takes the full height */
 }
 
 .edge-scroll-left {
@@ -251,6 +267,18 @@ rect {
   width: 50%;
   height: 1em;
   background: linear-gradient(to right, transparent, #000);
+}
+
+.offcanvas-header {
+  height: 10%;
+}
+
+#facts-container {
+  height: 60%;
+}
+
+#search-results-container {
+  height: 20%;
 }
 
 /*-----------------------------------*\
