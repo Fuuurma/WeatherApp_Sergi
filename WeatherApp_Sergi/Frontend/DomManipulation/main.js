@@ -83,7 +83,7 @@ window.onload = () => {
     .querySelector(".current-location-button")
     .addEventListener("click", getCurrentLocation);
   document
-    .querySelector(".add-favorite-button")
+    .querySelector("#add-favorite-btn")
     .addEventListener("click", addFavoriteButton);
   document
     .querySelector("#uploadPhotoModal")
@@ -145,12 +145,24 @@ function uploadPhotoModalShow() {
 }
 
 function addFavoriteButton() {
-  let favorite = {
-    name: targetLocation.name,
-    lat: targetLocation.lat,
-    lon: targetLocation.lon,
-  };
-  addFavorite(favorite);
+  const searchInput = document.querySelector("#searchLocation");
+  const location = searchInput.value;
+
+  getLocation(location)
+    .then((results) => {
+      if (results && results.length > 0) {
+        const result = results[0];
+        let favorite = {
+          name: result.name,
+          lat: result.latitude,
+          lon: result.longitude,
+        };
+        addFavorite(favorite);
+      } else {
+        console.log("No results found");
+      }
+    })
+    .catch((error) => console.log(error));
 }
 
 function getCurrentLocation() {

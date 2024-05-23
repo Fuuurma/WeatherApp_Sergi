@@ -115,7 +115,7 @@
         <!-- Card Ara-->
         <div class="card-ara card bg-dark bg-gradient w-100 text-light mb-3">
           <div class="card-body d-flex flex-column">
-            <button type="button" id="add-favorites-btn" class="add-favorite-button btn btn-sm btn-secondary rounded-pill position-absolute top-0 end-0 position-relative mt-2 me-2">
+            <button type="button" id="add-favorite-btn" class="add-favorite-button btn btn-sm btn-secondary rounded-pill position-absolute top-0 end-0 position-relative mt-2 me-2">
               <span class="badge text-bg-secondary">
                 <i class="bi bi-heart"></i>
               </span>
