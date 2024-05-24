@@ -1,4 +1,7 @@
 function fetchLocation(location) {
+  if (!location) {
+    return;
+  }
   return fetch(
     "https://geocoding-api.open-meteo.com/v1/search?" +
       new URLSearchParams({
@@ -14,6 +17,7 @@ function fetchLocation(location) {
 }
 
 function updateSuggestions(data) {
+  if (!data) return;
   let datalist = document.querySelector("#suggestions");
   datalist.innerHTML = "";
   data.forEach((item, index) => {

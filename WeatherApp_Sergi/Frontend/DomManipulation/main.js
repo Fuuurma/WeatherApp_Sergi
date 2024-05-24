@@ -69,6 +69,7 @@ window.onload = () => {
 
   defineGradients();
   makeCardsMoveAndBeDraggable();
+  checkAndDeleteGeoLocationIcon();
 
   document
     .getElementById("focus-on-chart-btn")
@@ -165,6 +166,9 @@ function getCurrentLocation() {
         targetLocation = newLocation;
         refreshDashboardReverseGeocoding(targetLocation);
         createGeoLocationButton();
+
+        getWikiResults(data[0]["name"]);
+        getGoogleResultsLocation(data[0]["name"]);
       });
     newLocation.name = "";
     newLocation.isFavorite = false;
@@ -173,11 +177,21 @@ function getCurrentLocation() {
   });
 }
 
+function checkAndDeleteGeoLocationIcon() {
+  const buttonContainer = document.getElementById("now-card-icons-container");
+  const existingButton = document.getElementById("geo-location-btn");
+  if (existingButton) {
+    buttonContainer.removeChild(existingButton);
+  }
+}
+
 function createGeoLocationButton() {
+  checkAndDeleteGeoLocationIcon();
   const buttonContainer = document.getElementById("now-card-icons-container");
   const geoLocationButton = document.createElement("button");
   geoLocationButton.type = "button";
   geoLocationButton.className = "btn btn-sm btn-secondary rounded-pill";
+  geoLocationButton.id = "geo-location-btn";
   geoLocationButton.innerHTML = '<i class="bi bi-crosshair"></i>';
   buttonContainer.appendChild(geoLocationButton);
 }
