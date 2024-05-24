@@ -8,6 +8,7 @@ import { defineGradients } from "./drawPlots/drawPlots.js";
 import { focusWindowOnChart } from "./drawPlots/focusOnChart.js";
 import { fetchMeteo } from "./meteoApi.js";
 import { manipulateData, updateLocationTitle } from "./manipulateData.js";
+import { refreshDashboard, refreshSuggestions } from "./refresh/refresh.js";
 import {
   requestLogin,
   requestLogout,
@@ -69,6 +70,10 @@ window.onload = () => {
   defineGradients();
   makeCardsMoveAndBeDraggable();
 
+  document
+    .getElementById("focus-on-chart-btn")
+    .addEventListener("click", focusWindowOnChart);
+
   // new
   document.getElementById("login-btn").addEventListener("click", requestLogin);
   // document.getElementById("signup-btn").addEventListener("click", createUser);
@@ -79,9 +84,6 @@ window.onload = () => {
   document
     .getElementById("logout-link")
     .addEventListener("click", requestLogout);
-  document
-    .querySelector(".current-location-button")
-    .addEventListener("click", getCurrentLocation);
   document
     .querySelector("#add-favorite-btn")
     .addEventListener("click", addFavoriteButton);
@@ -105,24 +107,6 @@ window.onload = () => {
 
   // refreshDashboard();
 };
-
-function refreshSuggestions(e) {
-  if (e.target.value !== "" && e.target.value.length > 1) {
-    setTimeout(() => {
-      fetchLocation(e.target.value);
-    }, 250);
-  }
-}
-
-function refreshDashboard(location) {
-  if (location) {
-    console.log("location", location);
-    const latitude = location[0].latitude;
-    const longitude = location[0].longitude;
-    updateLocationTitle(location);
-    fetchMeteo(latitude, longitude);
-  }
-}
 
 // new
 
@@ -174,18 +158,28 @@ function getCurrentLocation() {
     reverseGeocoding(newLocation.lat, newLocation.lon)
       .then((response) => response.json())
       .then((data) => {
-        newLocation.name = data[0]["name"] + " (browser geolocation)";
+        newLocation.name = data[0]["name"];
         let locationNameConatiner = (document.getElementById(
           "curent-location-value"
         ).textContent = newLocation.name);
         targetLocation = newLocation;
         refreshDashboardReverseGeocoding(targetLocation);
+        createGeoLocationButton();
       });
     newLocation.name = "";
     newLocation.isFavorite = false;
     targetLocation = newLocation;
     refreshDashboard(targetLocation);
   });
+}
+
+function createGeoLocationButton() {
+  const buttonContainer = document.getElementById("now-card-icons-container");
+  const geoLocationButton = document.createElement("button");
+  geoLocationButton.type = "button";
+  geoLocationButton.className = "btn btn-sm btn-secondary rounded-pill";
+  geoLocationButton.innerHTML = '<i class="bi bi-crosshair"></i>';
+  buttonContainer.appendChild(geoLocationButton);
 }
 
 function refreshDashboardReverseGeocoding(location) {
@@ -201,3 +195,5 @@ async function setUserDashboard() {
 }
 
 function unsetUserDashboard() {}
+
+export { getCurrentLocation };

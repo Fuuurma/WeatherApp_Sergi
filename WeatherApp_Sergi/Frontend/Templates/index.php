@@ -35,9 +35,7 @@
         <datalist id="suggestions">
         </datalist>
         <button id="search-location-btn" class="search-button btn btn-light" type="submit">Search</button>
-        <button class="current-location-button btn btn-light mx-2" type="button">
-          <i class="geoloc-icon bi bi-crosshair"></i>
-        </button>
+
       </div>
 
 
@@ -115,11 +113,15 @@
         <!-- Card Ara-->
         <div class="card-ara card bg-dark bg-gradient w-100 text-light mb-3">
           <div class="card-body d-flex flex-column">
-            <button type="button" id="add-favorite-btn" class="add-favorite-button btn btn-sm btn-secondary rounded-pill position-absolute top-0 end-0 position-relative mt-2 me-2">
-              <span class="badge text-bg-secondary">
+            <div id="now-card-icons-container" class="container w-25 position-absolute top-0 end-0 position-relative mt-3 me-2 d-flex flex-column gap-2">
+              <button type="button" id="add-favorite-btn" class="add-favorite-button btn btn-sm btn-secondary rounded-pill ">
                 <i class="bi bi-heart"></i>
-              </span>
-            </button>
+              </button>
+              <button type="button" id="focus-on-chart-btn" class="btn btn-sm btn-secondary rounded-pill">
+                <i class="bi bi-graph-up-arrow"></i>
+              </button>
+            </div>
+
             <span class="h2 card-text-ara card-text w-75 m-2" id="curent-location-value"></span>
             <div class="d-flex flex-row justify-content-evenly align-items-center mb-3">
               <div class="col-6">

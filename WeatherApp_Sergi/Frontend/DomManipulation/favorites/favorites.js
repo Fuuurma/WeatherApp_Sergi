@@ -1,5 +1,6 @@
 import { fetchMeteo } from "../meteoApi.js";
 import { updateDashboard } from "../dashboard/dashboards.js";
+import { getCurrentLocation } from "../main.js";
 
 function getFavorites() {
   console.log("Getting favorites...");
@@ -59,19 +60,48 @@ function refreshFavorites(favorites) {
     element.remove();
   });
 
+  createCurrentLocationOption();
+
   favorites.forEach((favorite) => {
-    let newAnchor = document.createElement("a");
-    newAnchor.innerHTML = favorite.name;
-    newAnchor.classList.add("favorite");
-    newAnchor.classList.add("dropdown-item");
-    newAnchor.setAttribute("lon", favorite.lon);
-    newAnchor.setAttribute("lat", favorite.lat);
-    newAnchor.style.cursor = "pointer";
-    newAnchor.addEventListener("click", fetchFavorite);
-    let newItem = document.createElement("li");
-    newItem.append(newAnchor);
-    favoritesList.append(newItem);
+    createNewFavoriteItem(favorite);
   });
+}
+
+function createCurrentLocationOption() {
+  let currentLocationBtn = document.createElement("a");
+  currentLocationBtn.className = "current-location-button dropdown-item";
+  currentLocationBtn.style.cursor = "pointer";
+  currentLocationBtn.addEventListener("click", getCurrentLocation);
+
+  let icon = document.createElement("i");
+  icon.className = "geoloc-icon bi bi-crosshair me-2";
+
+  let text = document.createTextNode("Current location");
+  currentLocationBtn.append(icon);
+  currentLocationBtn.append(text);
+
+  let favoritesList = document.querySelectorAll(".favorites-list")[0];
+
+  let newItem = document.createElement("li");
+  newItem.append(currentLocationBtn);
+  favoritesList.append(newItem);
+}
+
+function createNewFavoriteItem(favorite) {
+  let newAnchor = document.createElement("a");
+  newAnchor.innerHTML = favorite.name;
+  newAnchor.classList.add("favorite");
+  newAnchor.classList.add("dropdown-item");
+  newAnchor.setAttribute("lon", favorite.lon);
+  newAnchor.setAttribute("lat", favorite.lat);
+  newAnchor.style.cursor = "pointer";
+  newAnchor.addEventListener("click", () => fetchFavorite(favorite));
+
+  let newItem = document.createElement("li");
+  newItem.append(newAnchor);
+
+  let favoritesList = document.querySelectorAll(".favorites-list")[0];
+  favoritesList.append(newItem);
 }
 
 function fetchFavorite(event) {
@@ -81,13 +111,13 @@ function fetchFavorite(event) {
     lat: event.target.getAttribute("lat"),
     lon: event.target.getAttribute("lon"),
   };
-  fetchMeteo(location)
-    .then((response) => response.json())
-    .then((data) => {
-      // console.log(data)
-      updateDashboard(data, location);
-    })
-    .catch((error) => console.log(error));
+  fetchMeteo(location);
+  // .then((response) => response.json())
+  // .then((data) => {
+  //   // console.log(data)
+  //   updateDashboard(data, location);
+  // })
+  // .catch((error) => console.log(error));
 }
 
 function requestUploadPhoto() {
