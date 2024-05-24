@@ -143,7 +143,8 @@ rect {
   opacity: 0.75;
 }
 
-#hourly-data-day-title {
+#hourly-data-day-title,
+#hourly-data-location-title {
   color: var(--chart-text);
   opacity: 0.75;
 }

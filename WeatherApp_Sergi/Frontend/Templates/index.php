@@ -764,14 +764,15 @@
               </div>
             </div>
           </div>
-          <div class="h3 m-0 p-0 pl-5 text-light" id="hourly-data-day-title"></div>
+          <div class="h3 m-0 p-0 pl-5 text-light my-2">
+            <span id="hourly-data-location-title" class="pe-2"></span>
+            <span id="hourly-data-day-title"></span>
+          </div>
           <div id="temperature-chart" class="text-center m-0"></div>
           <div id="rain-chart" class="d-none text-center m-0"></div>
           <div id="wind-chart" class="d-none text-center m-0"></div>
           <div id="tooltip"></div>
         </div>
-
-
       </div>
 
       <footer class="w-100 mt-3 text-white-50 d-flex flex-columns justify-content-around">

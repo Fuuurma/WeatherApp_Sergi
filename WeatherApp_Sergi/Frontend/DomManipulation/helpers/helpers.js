@@ -10,33 +10,41 @@ const formatDayTitle = (fullDate) => {
   const month = dateObject.getMonth();
 
   const daysOfTheWeek = [
-    "Diumenge",
-    "Dilluns",
-    "Dimarts",
-    "Dimecres",
-    "Dijous",
-    "Divendres",
-    "Dissabte",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
   ];
 
   const monthOfTheYear = [
-    "Gener",
-    "Febrer",
-    "Març",
-    "Abril",
-    "Maig",
-    "Juny",
-    "Juliol",
-    "Agost",
-    "Setembre",
-    "Octubre",
-    "Novembre",
-    "Desembre",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
+  let prefix =
+    dayNumber % 10 === 1 && dayNumber % 100 !== 11
+      ? "st"
+      : dayNumber % 10 === 2 && dayNumber % 100 !== 12
+      ? "nd"
+      : dayNumber % 10 === 3 && dayNumber % 100 !== 13
+      ? "rd"
+      : "th";
 
   let dayInString = daysOfTheWeek[dateObject.getDay()];
   let monthInString = monthOfTheYear[month];
-  return `${dayInString}, ${dayNumber} de ${monthInString}`;
+  return `${dayInString}, ${monthInString} ${dayNumber}${prefix}`;
 };
 
 const AIR_QUALITY_CLASSES = {

@@ -117,5 +117,7 @@ const updateLocationTitle = (location) => {
   document.getElementById(
     "curent-location-value"
   ).textContent = `${locationName}, ${province}, ${country}`;
+  const chartTitle = document.getElementById("hourly-data-location-title");
+  chartTitle.textContent = `${locationName}, ${province}, ${country}`;
 };
 export { manipulateData, updateLocationTitle };

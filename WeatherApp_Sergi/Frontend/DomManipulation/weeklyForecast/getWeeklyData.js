@@ -26,7 +26,7 @@ const displayWeeklyWeather = (data) => {
     rain.innerHTML = `${day.rainSum}${milliLiters()}`;
 
     const wind = row.querySelector(".card-wind");
-    wind.innerHTML = `Wind: ${day.windMax} ${windSpeed()} at ${
+    wind.innerHTML = `${day.windMax} ${windSpeed()} at ${
       day.windDirection
     }${directionDegres()}`;
 
