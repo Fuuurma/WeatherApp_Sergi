@@ -41,9 +41,9 @@
 
 
       <div class="auth-links">
-        <span id="login-link" class="auth-link text-light" style="cursor:pointer; text-decoration: underline;" data-bs-toggle="modal" data-bs-target="#loginModal">Login</span>
+        <span id="login-link" class="auth-link text-light px-5" style="cursor:pointer; text-decoration: underline;" data-bs-toggle="modal" data-bs-target="#loginModal">Login</span>
         <span id="signup-link" class="auth-link text-light" style="cursor:pointer; text-decoration: underline;" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</span>
-        <span id="welcome-user" class="auth-link text-light" style="display:none;">Welcome, <span id="user-name"></span></span>
+        <span id="welcome-user" class="auth-link text-light px-5" style="display:none;">Welcome, <span id="user-name"></span></span>
         <span id="logout-link" class="auth-link text-light" style="cursor:pointer; text-decoration: underline; display:none;">Logout</span>
       </div>
   </div>
@@ -52,9 +52,9 @@
 
 
   <!-- Add modals for login and signup -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
+  <div class="modal fade bg-black bg-gradient" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog text-light">
+      <div class="modal-content bg-dark shadow shadow-lg">
         <div class="modal-header">
           <h5 class="modal-title" id="loginModalLabel">Login</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -69,16 +69,16 @@
               <label for="loginPassword" class="form-label">Password</label>
               <input type="password" class="form-control" id="loginPassword" name="password" required>
             </div>
-            <button type="button" id="login-btn" class="btn btn-primary">Login</button>
+            <button type="button" id="login-btn" class="btn btn-primary mt-1">Login</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal fade bg-black bg-gradient" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content bg-dark text-light shadow shadow-lg">
         <div class="modal-header">
           <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -93,7 +93,7 @@
               <label for="signupPassword" class="form-label">Password</label>
               <input type="password" class="form-control" id="signupPassword" name="signupPassword" required>
             </div>
-            <button type="button" id="signup-btn" class="btn btn-primary">Sign Up</button>
+            <button type="button" id="signup-btn" class="btn btn-primary mt-1">Sign Up</button>
           </form>
         </div>
       </div>
@@ -114,10 +114,10 @@
         <div class="card-ara card bg-dark bg-gradient w-100 text-light mb-3">
           <div class="card-body d-flex flex-column">
             <div id="now-card-icons-container" class="container w-25 position-absolute top-0 end-0 position-relative mt-3 me-2 d-flex flex-column gap-2">
-              <button type="button" id="add-favorite-btn" class="add-favorite-button btn btn-sm btn-secondary rounded-pill ">
+              <button type="button" id="add-favorite-btn" class="add-favorite-button btn btn-sm btn-secondary rounded-pill shadow shadow-lg">
                 <i class="bi bi-heart"></i>
               </button>
-              <button type="button" id="focus-on-chart-btn" class="btn btn-sm btn-secondary rounded-pill">
+              <button type="button" id="focus-on-chart-btn" class="btn btn-sm btn-secondary rounded-pill shadow shadow-lg">
                 <i class="bi bi-graph-up-arrow"></i>
               </button>
             </div>
@@ -180,7 +180,7 @@
               <div class="d-flex flex-row justify-content-evenly align-items-center rounded-3 py-2 roounded bg-dark mt-2">
                 <div class="col-2 d-flex justify-content-center">#</div>
                 <div class="col-2 d-flex justify-content-start">Date</div>
-                <div class="col-2 d-flex justify-content-center"> Min/Max Temp</div>
+                <div class="col-2 d-flex justify-content-center"> Min/Max</div>
                 <div class="col-2 d-flex justify-content-center">Precipitations</div>
                 <div class="col-2 d-flex justify-content-center">Wind</div>
                 <div class="col-2 d-flex justify-content-center">See more</div>
@@ -199,7 +199,7 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center">
                   <span class="card-wind card-text text-light text-start"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
@@ -223,7 +223,7 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center">
                   <span class="card-wind card-text text-light text-start"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
@@ -247,32 +247,7 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
-                <div class="col-2">
-                  <span class="card-wind card-text text-light text-start"></span>
-                </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
-                    <i class="bi bi-eye"></i>
-                  </button>
-                </div>
-              </div>
-
-
-              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <div class="col-2 d-flex justify-content-center">
-                  <img src="" class="card-img card-img-top" alt="..." />
-                </div>
-
-                <div class="col-2">
-                  <span class="card-text-data card-text text-start"></span>
-                </div>
-                <div class="col-2 d-flex justify-content-center">
-                  <span class="card-text-temp card-text text-start"></span>
-                </div>
-                <div class="col-2 d-flex justify-content-center">
-                  <span class="card-rain card-text text-light text-start"></span>
-                </div>
-                <div class="col-2">
                   <span class="card-wind card-text text-light text-start"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
@@ -297,7 +272,32 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <span class="card-wind card-text text-light text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+
+              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
+                <div class="col-2 d-flex justify-content-center">
+                  <img src="" class="card-img card-img-top" alt="..." />
+                </div>
+
                 <div class="col-2">
+                  <span class="card-text-data card-text text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <span class="card-text-temp card-text text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <span class="card-rain card-text text-light text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
                   <span class="card-wind card-text text-light text-start"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
@@ -321,7 +321,7 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center">
                   <span class="card-wind card-text text-light text-start"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
@@ -345,7 +345,7 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center">
                   <span class="card-wind card-text text-light text-start"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
@@ -783,7 +783,7 @@
   </main>
 
   <!-- UPLOAD PHOTO MODAL -->
-  <div class="modal fade" id="uploadPhotoModal" tabindex="-1" aria-labelledby="uploadPhotoLabel" aria-hidden="true">
+  <div class="modal fade bg-dark bg-gradient" id="uploadPhotoModal" tabindex="-1" aria-labelledby="uploadPhotoLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

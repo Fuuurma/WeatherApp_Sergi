@@ -1,7 +1,7 @@
 function fetchLocation(location) {
-  if (!location) {
-    return;
-  }
+  // if (!location) {
+  //   return;
+  // }
   return fetch(
     "https://geocoding-api.open-meteo.com/v1/search?" +
       new URLSearchParams({
