@@ -20,7 +20,7 @@ import {
 import {
   requestUploadPhoto,
   addFavorite,
-  refreshPhotos,
+  // refreshPhotos,
   getFavorites,
 } from "./favorites/favorites.js";
 
@@ -114,14 +114,14 @@ window.onload = () => {
 function showOffcanvas(event) {
   event.preventDefault();
 
-  refreshPhotos(targetLocation);
+  // refreshPhotos(targetLocation);
 
   let offCanvas = new bootstrap.Offcanvas(
     document.querySelector("#offcanvasExample")
   );
-  document.querySelector("#offcanvas-location").innerHTML = targetLocation.name;
-  document.querySelector("#offcanvas-lat").innerHTML = targetLocation.lat;
-  document.querySelector("#offcanvas-lon").innerHTML = targetLocation.lon;
+  // document.querySelector("#offcanvas-location").innerHTML = targetLocation.name;
+  // document.querySelector("#offcanvas-lat").innerHTML = targetLocation.lat;
+  // document.querySelector("#offcanvas-lon").innerHTML = targetLocation.lon;
   offCanvas.show();
 }
 

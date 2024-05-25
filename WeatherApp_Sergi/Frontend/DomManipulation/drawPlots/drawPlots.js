@@ -15,7 +15,7 @@ const drawPlot = (time, data, plotType) => {
   switch (plotType) {
     case "temperature":
       selector = "#temperature-chart";
-      plotTitle = "Temperature over Time";
+      // plotTitle = "Temperature over Time";
       lineGradient = "url(#temperature-gradient)";
       measurementUnit = celsiusDegres;
       measurementLabel = `Temperature in ${celsiusDegres()}`;
@@ -23,7 +23,7 @@ const drawPlot = (time, data, plotType) => {
 
     case "rain":
       selector = "#rain-chart";
-      plotTitle = "Rain over Time";
+      // plotTitle = "Rain over Time";
       lineGradient = "url(#precipitation-gradient)";
       measurementUnit = milliLiters;
       measurementLabel = `Precipitations in ${milliLiters()}`;
@@ -31,7 +31,7 @@ const drawPlot = (time, data, plotType) => {
 
     case "wind":
       selector = "#wind-chart";
-      plotTitle = "Wind over Time";
+      // plotTitle = "Wind over Time";
       lineGradient = "url(#wind-gradient)";
       measurementUnit = windSpeed;
       measurementLabel = `Wind speed in ${windSpeed()}`;
@@ -134,15 +134,15 @@ const drawPlot = (time, data, plotType) => {
   // .text(measurementLabel);
 
   // Add chart title
-  svg
-    .append("text")
-    .attr("class", "h3 m-2")
-    .attr("x", width / 2)
-    .attr("y", -margin.top / 2)
-    .style("text-anchor", "middle")
-    .style("fill", "var(--chart-text)")
-    .style("opacity", "0.75")
-    .text(plotTitle);
+  // svg
+  //   .append("text")
+  //   .attr("class", "h3 m-2")
+  //   .attr("x", width / 2)
+  //   .attr("y", -margin.top / 2)
+  //   .style("text-anchor", "middle")
+  //   .style("fill", "var(--chart-text)")
+  //   .style("opacity", "0.75")
+  //   .text(plotTitle);
 
   // Add gridlines
   const gridlines = svg

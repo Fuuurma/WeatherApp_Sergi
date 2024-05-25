@@ -41,10 +41,10 @@
 
 
       <div class="auth-links">
-        <span id="login-link" class="auth-link text-light px-5" style="cursor:pointer; text-decoration: underline;" data-bs-toggle="modal" data-bs-target="#loginModal">Login</span>
-        <span id="signup-link" class="auth-link text-light" style="cursor:pointer; text-decoration: underline;" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</span>
-        <span id="welcome-user" class="auth-link text-light px-5" style="display:none;">Welcome, <span id="user-name"></span></span>
-        <span id="logout-link" class="auth-link text-light" style="cursor:pointer; text-decoration: underline; display:none;">Logout</span>
+        <span id="login-link" class="auth-link text-light px-5 link-offset-2" style="cursor:pointer; text-decoration: underline;" data-bs-toggle="modal" data-bs-target="#loginModal">Login</span>
+        <span id="signup-link" class="auth-link text-light link-offset-2" style="cursor:pointer; text-decoration: underline;" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</span>
+        <span id="welcome-user" class="auth-link text-light px-5 link-offset-2" style="display:none;">Welcome, <span id="user-name"></span></span>
+        <span id="logout-link" class="auth-link text-light link-offset-2" style="cursor:pointer; text-decoration: underline; display:none;">Logout</span>
       </div>
   </div>
   </header>
@@ -177,10 +177,10 @@
             <div class="card-body d-flex flex-column gap-2 pt-0">
 
               <!-- Header -->
-              <div class="d-flex flex-row justify-content-evenly align-items-center rounded-3 py-2 roounded bg-dark mt-2">
+              <div class="d-flex flex-row justify-content-evenly align-items-center rounded-3 py-2 roounded bg-black bg-gradient mt-2">
                 <div class="col-2 d-flex justify-content-center">#</div>
-                <div class="col-2 d-flex justify-content-start">Date</div>
-                <div class="col-2 d-flex justify-content-center"> Min/Max</div>
+                <div class="col-2 d-flex justify-content-center">Date</div>
+                <div class="col-2 d-flex justify-content-center"> Min - Max</div>
                 <div class="col-2 d-flex justify-content-center">Precipitations</div>
                 <div class="col-2 d-flex justify-content-center">Wind</div>
                 <div class="col-2 d-flex justify-content-center">See more</div>
@@ -191,7 +191,7 @@
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
                 <div class="col-2">
-                  <span class="card-text-data card-text text-start"></span>
+                  <span class="card-text-data card-text text-start h6"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-text-temp card-text text-start"></span>
@@ -199,11 +199,12 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
-                <div class="col-2 d-flex justify-content-center">
+                <div class="col-2 d-flex justify-content-center align-items-center gap-2">
                   <span class="card-wind card-text text-light text-start"></span>
+                  <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -213,9 +214,8 @@
                 <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
-
                 <div class="col-2">
-                  <span class="card-text-data card-text text-start"></span>
+                  <span class="card-text-data card-text text-start h6"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-text-temp card-text text-start"></span>
@@ -223,11 +223,13 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
-                <div class="col-2 d-flex justify-content-center">
+                <div class="col-2 d-flex justify-content-center align-items-center gap-2">
                   <span class="card-wind card-text text-light text-start"></span>
+                  <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
+
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -237,9 +239,8 @@
                 <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
-
                 <div class="col-2">
-                  <span class="card-text-data card-text text-start"></span>
+                  <span class="card-text-data card-text text-start h6"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-text-temp card-text text-start"></span>
@@ -247,36 +248,12 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
-                <div class="col-2 d-flex justify-content-center">
+                <div class="col-2 d-flex justify-content-center align-items-center gap-2">
                   <span class="card-wind card-text text-light text-start"></span>
+                  <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
-                    <i class="bi bi-eye"></i>
-                  </button>
-                </div>
-              </div>
-
-
-              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <div class="col-2 d-flex justify-content-center">
-                  <img src="" class="card-img card-img-top" alt="..." />
-                </div>
-
-                <div class="col-2">
-                  <span class="card-text-data card-text text-start"></span>
-                </div>
-                <div class="col-2 d-flex justify-content-center">
-                  <span class="card-text-temp card-text text-start"></span>
-                </div>
-                <div class="col-2 d-flex justify-content-center">
-                  <span class="card-rain card-text text-light text-start"></span>
-                </div>
-                <div class="col-2 d-flex justify-content-center">
-                  <span class="card-wind card-text text-light text-start"></span>
-                </div>
-                <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -287,9 +264,8 @@
                 <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
-
                 <div class="col-2">
-                  <span class="card-text-data card-text text-start"></span>
+                  <span class="card-text-data card-text text-start h6"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-text-temp card-text text-start"></span>
@@ -297,11 +273,38 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
-                <div class="col-2 d-flex justify-content-center">
+                <div class="col-2 d-flex justify-content-center align-items-center gap-2">
                   <span class="card-wind card-text text-light text-start"></span>
+                  <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+
+              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
+                <div class="col-2 d-flex justify-content-center">
+                  <img src="" class="card-img card-img-top" alt="..." />
+                </div>
+
+                <div class="col-2">
+                  <span class="card-text-data card-text text-start h6"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <span class="card-text-temp card-text text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <span class="card-rain card-text text-light text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center gap-2">
+                  <span class="card-wind card-text text-light text-start"></span>
+                  <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -311,9 +314,8 @@
                 <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
-
                 <div class="col-2">
-                  <span class="card-text-data card-text text-start"></span>
+                  <span class="card-text-data card-text text-start h6"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-text-temp card-text text-start"></span>
@@ -321,11 +323,12 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
-                <div class="col-2 d-flex justify-content-center">
+                <div class="col-2 d-flex justify-content-center align-items-center gap-2">
                   <span class="card-wind card-text text-light text-start"></span>
+                  <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -335,9 +338,8 @@
                 <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
-
                 <div class="col-2">
-                  <span class="card-text-data card-text text-start"></span>
+                  <span class="card-text-data card-text text-start h6"></span>
                 </div>
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-text-temp card-text text-start"></span>
@@ -345,11 +347,12 @@
                 <div class="col-2 d-flex justify-content-center">
                   <span class="card-rain card-text text-light text-start"></span>
                 </div>
-                <div class="col-2 d-flex justify-content-center">
+                <div class="col-2 d-flex justify-content-center align-items-center gap-2">
                   <span class="card-wind card-text text-light text-start"></span>
+                  <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-light btn-sm see-hourly-data" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -359,6 +362,7 @@
         </div>
 
       </div>
+
 
 
       <div class="row d-flex flex-row my-3">
@@ -764,8 +768,8 @@
               </div>
             </div>
           </div>
-          <div class="h3 m-0 p-0 pl-5 text-light my-2">
-            <span id="hourly-data-location-title" class="pe-2"></span>
+          <div class="h3 m-0 p-0 d-flex justify-content-center text-light my-2 gap-4">
+            <span id="hourly-data-location-title" class=""></span>
             <span id="hourly-data-day-title"></span>
           </div>
           <div id="temperature-chart" class="text-center m-0"></div>
@@ -842,52 +846,78 @@
 
 
   <!-- OFFCANVAS  PHOTO DISPLAY-->
-  <div class="offcanvas offcanvas-bottom bg-dark h-100" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" data-bs-backdrop="false">
-    <div id="location-images-body" class="container w-50 justify-content-center bg-light">
-      <div class="row">
-        <div class="col-12 d-flex gap-3">
-          <div class="offcanvas-title h3" id="offcanvasExampleLabel">Images from Location</div>
-          <button class="upload-photo-button btn btn-light mx-2" type="button" data-bs-toggle="modal" data-bs-target="#uploadPhotoModal">
-            <i class="bi bi-camera"></i>
-          </button>
-          <button type="button" class="btn-close offcanvas-close btn-danger" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body d-flex flex-row align-items-center justify-content-evenly">
-          <!-- Location card -->
-          <div class="card bg-dark-subtle" style="width: 18rem;">
-            <div class="card-body">
-              <h6 class="card-title text-secondary-emphasis">Location:</h6>
-              <span class="mb-5" id="offcanvas-location">wwww</span>
-              <h6 class="card-title my-4">Latitude:
-                <span id="offcanvas-lat"></span>
-              </h6>
-              <h6 class="card-title my-4">Longitude:
-                <span id="offcanvas-lon"></span>
-              </h6>
+  <div class="offcanvas offcanvas-bottom bg-dark text-light h-100" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" data-bs-backdrop="false">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Images from Location - Work in progress</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-between align-items-center">
+            <div>
+              <button class="btn btn-light me-2" type="button" data-bs-toggle="modal" data-bs-target="#uploadPhotoModal">
+                <i class="bi bi-camera"></i> Upload Photo
+              </button>
             </div>
           </div>
-          <!-- Carousel -->
-          <div id="carouselExample" class="carousel slide w-50">
-            <div class="carousel-inner d-flex flex-row align-items-center">
-              <div class="carousel-item active">
-                <img src="https://picsum.photos/id/1015/536/354" class="d-block w-100" alt="...">
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card bg-secondary text-light mb-4">
+              <div class="card-body">
+                <h6 class="card-title">Location:</h6>
+                <p id="offcanvas-location" class="card-text">wwww</p>
+                <h6 class="card-title">Latitude:</h6>
+                <p id="offcanvas-lat" class="card-text">-</p>
+                <h6 class="card-title">Longitude:</h6>
+                <p id="offcanvas-lon" class="card-text">-</p>
               </div>
-              <!-- Add more carousel items here -->
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+          </div>
+          <div class="col-md-8 ">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+
+                </div>
+                <!-- Add more carousel items here -->
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Upload Photo Modal (if needed) -->
+  <div class="modal fade" id="uploadPhotoModal" tabindex="-1" aria-labelledby="uploadPhotoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="uploadPhotoModalLabel">Upload Photo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <!-- Form content here -->
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Upload</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   </div>
 
@@ -903,5 +933,36 @@
 <!-- <script src="./assets/js/color-modes.js"></script> -->
 <script src="../DomManipulation/main.js" type="module"></script>
 
+<script>
+  const offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasExample'));
+
+  function displayLocationImages(locationName, latitude, longitude, images) {
+    document.getElementById('offcanvas-location').textContent = locationName;
+    document.getElementById('offcanvas-lat').textContent = latitude;
+    document.getElementById('offcanvas-lon').textContent = longitude;
+
+    const carouselInner = document.querySelector('.carousel-inner');
+    carouselInner.innerHTML = ''; // Clear existing carousel items
+
+    images.forEach((image, index) => {
+      const carouselItem = document.createElement('div');
+      carouselItem.classList.add('carousel-item');
+      if (index === 0) {
+        carouselItem.classList.add('active');
+      }
+      carouselItem.innerHTML = `
+        <img src="${image}" class="d-block w-100" alt="...">
+      `;
+      carouselInner.appendChild(carouselItem);
+    });
+  }
+
+  // Call the displayLocationImages function with the location details and image URLs
+  displayLocationImages('Barcelona', 37.7749, -122.4194, [
+    '../assets/images/work-in-progress.png',
+    'https://picsum.photos/id/1016/536/354',
+    'https://picsum.photos/id/1017/536/354',
+  ]);
+</script>
 
 </html>

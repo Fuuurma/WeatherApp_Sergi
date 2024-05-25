@@ -157,52 +157,52 @@ function requestUploadPhoto() {
     });
 }
 
-function refreshPhotos(location) {
-  document.querySelectorAll(".carousel-item").forEach((element) => {
-    element.remove();
-  });
+// function refreshPhotos(location) {
+//   document.querySelectorAll(".carousel-item").forEach((element) => {
+//     element.remove();
+//   });
 
-  console.log(`Downloading photos from ...${location.name}`);
+//   console.log(`Downloading photos from ...${location.name}`);
 
-  const formData = new FormData();
-  formData.append("downloadPhotos", true);
-  formData.append("location", location.name);
+//   const formData = new FormData();
+//   formData.append("downloadPhotos", true);
+//   formData.append("location", location.name);
 
-  const options = {
-    method: "POST",
-    body: formData,
-  };
+//   const options = {
+//     method: "POST",
+//     body: formData,
+//   };
 
-  fetch("./favorites.php", options)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
+//   fetch("./favorites.php", options)
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .then((data) => {
+//       console.log(data);
 
-      data.forEach((url) => {
-        let photo = document.createElement("img");
-        photo.src = url["url"];
-        photo.classList.add(
-          "d-block",
-          "w-100",
-          "border",
-          "border-3",
-          "border-danger-subtle",
-          "rounded-4"
-        );
-        let carouselItem = document.createElement("div");
-        carouselItem.classList.add("carousel-item");
-        carouselItem.append(photo);
-        document
-          .querySelector("#carouselExample div.carousel-inner")
-          .append(carouselItem);
-      });
-      document.querySelector(".carousel-item").classList.add("active");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
+//       data.forEach((url) => {
+//         let photo = document.createElement("img");
+//         photo.src = url["url"];
+//         photo.classList.add(
+//           "d-block",
+//           "w-100",
+//           "border",
+//           "border-3",
+//           "border-danger-subtle",
+//           "rounded-4"
+//         );
+//         let carouselItem = document.createElement("div");
+//         carouselItem.classList.add("carousel-item");
+//         carouselItem.append(photo);
+//         document
+//           .querySelector("#carouselExample div.carousel-inner")
+//           .append(carouselItem);
+//       });
+//       document.querySelector(".carousel-item").classList.add("active");
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// }
 
-export { getFavorites, addFavorite, requestUploadPhoto, refreshPhotos };
+export { getFavorites, addFavorite, requestUploadPhoto };

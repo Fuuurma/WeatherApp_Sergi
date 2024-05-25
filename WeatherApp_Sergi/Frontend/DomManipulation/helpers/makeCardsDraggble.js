@@ -51,6 +51,7 @@ let makeCardsMoveAndBeDraggable = () => {
   let scrollInterval;
 
   edgeScrollLeft.addEventListener("mouseenter", () => {
+    leftArrowicon.classList.add("hide");
     scrollInterval = setInterval(() => {
       container.scrollLeft -= 10;
       checkBounce();
@@ -58,10 +59,12 @@ let makeCardsMoveAndBeDraggable = () => {
   });
 
   edgeScrollLeft.addEventListener("mouseleave", () => {
+    leftArrowicon.classList.remove("hide");
     clearInterval(scrollInterval);
   });
 
   edgeScrollRight.addEventListener("mouseenter", () => {
+    rightArrowicon.classList.add("hide");
     scrollInterval = setInterval(() => {
       container.scrollLeft += 10;
       checkBounce();
@@ -69,6 +72,7 @@ let makeCardsMoveAndBeDraggable = () => {
   });
 
   edgeScrollRight.addEventListener("mouseleave", () => {
+    rightArrowicon.classList.remove("hide");
     clearInterval(scrollInterval);
   });
 

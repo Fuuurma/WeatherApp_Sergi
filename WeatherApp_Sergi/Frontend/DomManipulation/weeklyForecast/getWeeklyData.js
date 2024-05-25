@@ -13,25 +13,25 @@ const displayWeeklyWeather = (data) => {
 
   data.forEach((day, index) => {
     const row = rows[index];
-
     const weatherIcon = row.querySelector(".card-img");
+    const temperature = row.querySelector(".card-text-temp");
+    const rain = row.querySelector(".card-rain");
+    const wind = row.querySelector(".card-wind");
+    const windImage = row.querySelector(".weekly-weather-wind-img");
+    const date = row.querySelector(".card-text-data");
+
     weatherIcon.src = getImageForWeatherCode(day.weatherCode);
 
-    const temperature = row.querySelector(".card-text-temp");
-    temperature.innerHTML = `${day.maxTemperature}${celsiusDegres()} - ${
-      day.minTemperature
+    temperature.innerHTML = `${day.minTemperature}${celsiusDegres()} - ${
+      day.maxTemperature
     }${celsiusDegres()}`;
 
-    const rain = row.querySelector(".card-rain");
     rain.innerHTML = `${day.rainSum}${milliLiters()}`;
 
-    const wind = row.querySelector(".card-wind");
-    wind.innerHTML = `${day.windMax} ${windSpeed()} at ${
-      day.windDirection
-    }${directionDegres()}`;
+    wind.innerHTML = `${day.windMax} ${windSpeed()}`;
 
-    // Set the date
-    const date = row.querySelector(".card-text-data");
+    windImage.style.transform = `rotate(${day.windDirection}deg)`;
+
     date.innerHTML = formatDayTitle(day.date);
   });
 };
