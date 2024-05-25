@@ -1,14 +1,18 @@
+import { defineGradients } from "./drawPlots/drawPlots.js";
+import { focusWindowOnChart } from "./drawPlots/focusOnChart.js";
+import { fetchMeteo } from "./meteoApi.js";
+import { manipulateData, updateLocationTitle } from "./manipulateData.js";
+import { refreshDashboard, refreshSuggestions } from "./refresh/refresh.js";
+import { makeCardsMoveAndBeDraggable } from "../DomManipulation/helpers/makeCardsDraggble.js";
+import { getWikiResults } from "../DomManipulation/wikiresults/getWikiResults.js";
+import { signUpNewUser } from "../DomManipulation/auth/signUp.js";
 import {
   fetchLocation,
   getLocation,
   reverseGeocoding,
   defaultLocation,
 } from "./locations.js";
-import { defineGradients } from "./drawPlots/drawPlots.js";
-import { focusWindowOnChart } from "./drawPlots/focusOnChart.js";
-import { fetchMeteo } from "./meteoApi.js";
-import { manipulateData, updateLocationTitle } from "./manipulateData.js";
-import { refreshDashboard, refreshSuggestions } from "./refresh/refresh.js";
+
 import {
   requestLogin,
   requestLogout,
@@ -24,10 +28,6 @@ import {
   getFavorites,
 } from "./favorites/favorites.js";
 
-import { makeCardsMoveAndBeDraggable } from "../DomManipulation/helpers/makeCardsDraggble.js";
-
-import { getWikiResults } from "../DomManipulation/wikiresults/getWikiResults.js";
-import { signUpNewUser } from "../DomManipulation/auth/signUp.js";
 import {
   getGoogleResultsLocation,
   getGoogleResultsTemplate,

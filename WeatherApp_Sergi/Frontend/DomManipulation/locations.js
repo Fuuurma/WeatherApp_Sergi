@@ -32,17 +32,35 @@ function updateSuggestions(data) {
 }
 
 function getLocation(location) {
-  const locationName = location.split(",")[0];
+  // console.log("Before: ", location);
+  let [locationName, admin1, country] = location.split(",");
+  if (country == undefined) {
+    country = admin1;
+    admin1 = undefined;
+  }
+  // console.log("ss ", locationName, admin1, country);
   return fetch(
     "https://geocoding-api.open-meteo.com/v1/search?" +
       new URLSearchParams({
-        name: locationName,
-        count: 1,
+        name: locationName.trim(),
+        count: 10,
       })
   )
     .then((response) => response.json())
     .then((data) => {
-      return data.results;
+      // console.log("dayta", data);
+      if (data.results.length == 1) return data.results;
+      const results = data.results.filter((result) => {
+        if (admin1) {
+          return (
+            result.admin1 === admin1.trim() && result.country === country.trim()
+          );
+        } else {
+          return result.country === country.trim();
+        }
+      });
+      // console.log("Locaion got: ", results);
+      return results;
     })
     .catch((error) => console.log(error));
 }

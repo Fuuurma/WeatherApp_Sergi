@@ -55,16 +55,16 @@ function addFavorite(favorite) {
 function refreshFavorites(favorites) {
   // Borrar favoritos actuales
   let favoritesList = document.querySelectorAll(".favorites-list")[0];
-  console.log("favs: ", favoritesList);
   Array.from(favoritesList.children).forEach((element) => {
     element.remove();
   });
 
   createCurrentLocationOption();
-
-  favorites.forEach((favorite) => {
-    createNewFavoriteItem(favorite);
-  });
+  if (favorites) {
+    favorites.forEach((favorite) => {
+      createNewFavoriteItem(favorite);
+    });
+  }
 }
 
 function createCurrentLocationOption() {

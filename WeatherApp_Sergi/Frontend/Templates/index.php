@@ -848,7 +848,7 @@
   <!-- OFFCANVAS  PHOTO DISPLAY-->
   <div class="offcanvas offcanvas-bottom bg-dark text-light h-100" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" data-bs-backdrop="false">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Images from Location - Work in progress</h5>
+      <h5 class="offcanvas-title mx-5" id="offcanvasExampleLabel">Images from Location - Work in progress</h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">

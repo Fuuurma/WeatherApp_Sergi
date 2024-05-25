@@ -15,7 +15,6 @@ function checkLogin() {
   fetch("./login.php", options)
     .then((response) => response.text())
     .then((data) => {
-      console.log(data);
       if (data != "-1") {
         loggedIn = true;
         document.querySelector(".user-menu button").disabled = false;
