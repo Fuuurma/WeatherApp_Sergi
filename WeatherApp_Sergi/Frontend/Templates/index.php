@@ -123,7 +123,7 @@
             </div>
 
             <span class="h2 card-text-ara card-text w-75 m-2" id="curent-location-value"></span>
-            <div class="d-flex flex-row justify-content-evenly align-items-center mb-3">
+            <div class="d-flex flex-row justify-content-evenly align-items-center mb-5">
               <div class="col-6">
                 <div class="row m-2">
                   <span class="h4 card-text-resum card-text ps-0" id="current-weather-code-description"></span>
@@ -140,14 +140,15 @@
                 <img src="" class="card-img card-img-top" id="current-weather-code-img" alt="..." />
               </div>
             </div>
-            <div class="row d-flex flex-row gap-2">
-              <div class="d-flex justify-content-center">
-                <button id="see-facts-btn" class="btn btn-secondary mx-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#off-canvas-facts" aria-controls="off-canvas-facts">
+            <div class="row d-flex flex-row justify-content-center align-items-center">
+              <div class="col-6">
+                <button id="see-facts-btn" class="btn btn-secondary w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#off-canvas-facts" aria-controls="off-canvas-facts">
                   ¿Did you know?
-                  <i class="bi bi-question"></i>
+                  <!-- <i class="bi bi-question"></i> -->
                 </button>
-
-                <button id="see-images-btn" class="show-photo-button btn btn-secondary mx-2" type="button">
+              </div>
+              <div class="col-6">
+                <button id="see-images-btn" class="show-photo-button btn btn-secondary w-100" type="button">
                   Images
                   <i class="bi bi-image"></i>
                 </button>
@@ -174,10 +175,10 @@
           <!-- Card Previsió 7 dies-->
 
           <div class="card-previsio-5dies card bg-dark bg-gradient text-light" id="weekly-weather-card">
-            <div class="card-body d-flex flex-column gap-2 pt-0">
+            <div class="card-body d-flex flex-column gap-1 pt-0">
 
               <!-- Header -->
-              <div class="d-flex flex-row justify-content-evenly align-items-center rounded-3 py-2 roounded bg-black bg-gradient mt-2">
+              <div class="d-flex flex-row justify-content-evenly align-items-center rounded-3 pt-1 pb-2 roounded bg-dark bg-gradient mt-2">
                 <div class="col-2 d-flex justify-content-center">#</div>
                 <div class="col-2 d-flex justify-content-center">Date</div>
                 <div class="col-2 d-flex justify-content-center"> Min - Max</div>
@@ -186,7 +187,7 @@
                 <div class="col-2 d-flex justify-content-center">See more</div>
               </div>
 
-              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
+              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-1">
                 <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
@@ -210,7 +211,7 @@
                 </div>
               </div>
 
-              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
+              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-1">
                 <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
@@ -235,32 +236,7 @@
                 </div>
               </div>
 
-              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
-                <div class="col-2 d-flex justify-content-center">
-                  <img src="" class="card-img card-img-top" alt="..." />
-                </div>
-                <div class="col-2">
-                  <span class="card-text-data card-text text-start h6"></span>
-                </div>
-                <div class="col-2 d-flex justify-content-center">
-                  <span class="card-text-temp card-text text-start"></span>
-                </div>
-                <div class="col-2 d-flex justify-content-center">
-                  <span class="card-rain card-text text-light text-start"></span>
-                </div>
-                <div class="col-2 d-flex justify-content-center align-items-center gap-2">
-                  <span class="card-wind card-text text-light text-start"></span>
-                  <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
-                </div>
-                <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
-                    <i class="bi bi-eye"></i>
-                  </button>
-                </div>
-              </div>
-
-
-              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
+              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-1">
                 <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
@@ -285,7 +261,32 @@
               </div>
 
 
-              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
+              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-1">
+                <div class="col-2 d-flex justify-content-center">
+                  <img src="" class="card-img card-img-top" alt="..." />
+                </div>
+                <div class="col-2">
+                  <span class="card-text-data card-text text-start h6"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <span class="card-text-temp card-text text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <span class="card-rain card-text text-light text-start"></span>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center gap-2">
+                  <span class="card-wind card-text text-light text-start"></span>
+                  <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+
+              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-1">
                 <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
@@ -310,7 +311,7 @@
                 </div>
               </div>
 
-              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
+              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-1">
                 <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
@@ -334,7 +335,7 @@
                 </div>
               </div>
 
-              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-2">
+              <div class="d-flex flex-row justify-content-evenly align-items-center daily-weather-row rounded-3 py-1">
                 <div class="col-2 d-flex justify-content-center">
                   <img src="" class="card-img card-img-top" alt="..." />
                 </div>
@@ -420,7 +421,7 @@
           <div class="card-humitat card bg-dark bg-gradient w-100 text-light d-flex">
             <div class="card-body d-flex flex-column p-2 justify-content-center">
               <div class="row">
-                <div class="col-12 d-flex flex-row gap-5 justify-content-center align-items-center">
+                <div class="col-12 d-flex flex-row gap-3 justify-content-center align-items-center">
                   <div class="h6 card-text-titol card-text">Humidity</div>
                   <i class="card-icon bi bi-moisture bi-2x"></i>
                 </div>
@@ -435,11 +436,11 @@
           <div class="card-pressio card bg-dark bg-gradient w-100 text-light">
             <div class="card-body d-flex flex-column p-2 justify-content-center">
               <div class="row">
-                <div class="col-12 d-flex flex-row gap-5 justify-content-center">
+                <div class="col-12 d-flex flex-row gap-3 justify-content-center align-items-center">
                   <div class="h6 card-text-titol card-text">Atmospheric Pressure</div>
                   <i class="card-icon bi bi-hurricane bi-2x"></i>
                 </div>
-                <div class="col-12 d-flex justify-content-center">
+                <div class="col-12 d-flex justify-content-center align-items-center">
                   <div class="h3 card-text-mesura card-text" id="current-pressure-value"></div>
                 </div>
               </div>
@@ -450,13 +451,13 @@
 
           <!-- Card: Visibilitat -->
           <div class="card-visibilitat card bg-dark bg-gradient w-100 text-light">
-            <div class="card-body d-flex flex-column p-2 justify-content-center">
+            <div class="card-body d-flex flex-column p-2 justify-content-center align-items-center">
               <div class="row">
-                <div class="col-12 d-flex flex-row gap-5 justify-content-center">
+                <div class="col-12 d-flex flex-row gap-3 justify-content-center align-items-center">
                   <div class="h6 card-text-titol card-text">Rain</div>
-                  <i class="card-icon bi bi-cloud-drizzle bi-2x"></i>
+                  <i class="card-icon bi bi-cloud-drizzle bi-2x d-flex justify-content-center"></i>
                 </div>
-                <div class="col-12 d-flex justify-content-center">
+                <div class="col-12 d-flex justify-content-center align-items-center">
                   <div class="h3 card-text-mesura card-text" id="max-probability-precipitation-value"></div>
                 </div>
               </div>
@@ -465,13 +466,13 @@
 
           <!-- Card: Sensació -->
           <div class="card-sensacio card bg-dark bg-gradient w-100 text-light">
-            <div class="card-body d-flex flex-column p-2 justify-content-center">
+            <div class="card-body d-flex flex-column p-2 justify-content-center align-items-center">
               <div class="row">
-                <div class="col-12 d-flex flex-row gap-5 justify-content-center">
+                <div class="col-12 d-flex flex-row gap-3 justify-content-center align-items-center">
                   <div class="h6 card-text-titol card-text">Wind</div>
-                  <i class="card-icon bi bi-wind bi-2x"></i>
                 </div>
-                <div class="col-12 d-flex justify-content-center">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                  <img src="../assets/images/weather_icons/direction.png" id="current-wind-direction-img" alt="">
                   <div id="current-wind-value" class="h3 card-text-mesura card-text"></div>
                 </div>
               </div>

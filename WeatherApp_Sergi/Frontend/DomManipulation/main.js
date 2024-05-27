@@ -50,6 +50,9 @@ window.onload = () => {
     const locationName = location.split(",")[0];
     getWikiResults(locationName);
     getGoogleResultsLocation(location);
+    checkAndDeleteGeoLocationIcon();
+    searchInput.value = "";
+    chartSearchInput.value = "";
   });
 
   const chartSearchInput = document.querySelector("#chart-searchLocation");
@@ -65,19 +68,20 @@ window.onload = () => {
     getWikiResults(locationName);
     getGoogleResultsLocation(location);
     focusWindowOnChart();
+    checkAndDeleteGeoLocationIcon();
+    searchInput.value = "";
+    chartSearchInput.value = "";
   });
 
   defineGradients();
   makeCardsMoveAndBeDraggable();
-  checkAndDeleteGeoLocationIcon();
 
   document
     .getElementById("focus-on-chart-btn")
     .addEventListener("click", focusWindowOnChart);
 
-  // new
   document.getElementById("login-btn").addEventListener("click", requestLogin);
-  // document.getElementById("signup-btn").addEventListener("click", createUser);
+
   document
     .getElementById("signup-btn")
     .addEventListener("click", signUpNewUser);
@@ -105,11 +109,7 @@ window.onload = () => {
 
   targetLocation = defaultLocation;
   setInterval(refreshDashboard(targetLocation), 5000);
-
-  // refreshDashboard();
 };
-
-// new
 
 function showOffcanvas(event) {
   event.preventDefault();
@@ -143,9 +143,7 @@ function addFavoriteButton() {
           lon: result.longitude,
         };
         addFavorite(favorite);
-      } else {
-        console.log("No results found");
-      }
+      } else console.log("No results found");
     })
     .catch((error) => console.log(error));
 }
@@ -180,9 +178,7 @@ function getCurrentLocation() {
 function checkAndDeleteGeoLocationIcon() {
   const buttonContainer = document.getElementById("now-card-icons-container");
   const existingButton = document.getElementById("geo-location-btn");
-  if (existingButton) {
-    buttonContainer.removeChild(existingButton);
-  }
+  if (existingButton) buttonContainer.removeChild(existingButton);
 }
 
 function createGeoLocationButton() {

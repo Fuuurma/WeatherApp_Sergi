@@ -65,7 +65,11 @@ const currentDataManipulation = (data, units) => {
   currentSurfacePressureContainer.innerHTML = surfacePressure + pressureUnit;
 
   const currentWindContainer = document.getElementById("current-wind-value");
-  currentWindContainer.innerHTML = `${windSpeed}${windSpeedUnit} - ${windDirection}${windDirrectionUnit}`;
+  currentWindContainer.innerHTML = `${windSpeed}${windSpeedUnit}`;
+  const currentWindImage = document.getElementById(
+    "current-wind-direction-img"
+  );
+  currentWindImage.style.transform = `rotate(${windDirection}deg)`;
 
   const currentWeatherCodeImageRoute = getImageForWeatherCode(weatherCode);
   const currentWeatherCodecontainer = document.getElementById(
