@@ -73,21 +73,43 @@ const displayHourlyData = (data, dayWanted) => {
   }
 };
 
+// Cambia onclick el dia seleccionado para las cards horarias y los gráficos
 const displayHourlyDataNotCurrentDay = (data) => {
   const seeHourlyDataForDayBtns = document.querySelectorAll(".see-hourly-data");
+  const dailyWeatherRows = document.querySelectorAll(".daily-weather-row");
+
+  const clearSelectedDay = () => {
+    dailyWeatherRows.forEach((row) => row.classList.remove("selected-day"));
+  };
+
+  const handleDisplayHourlyData = (order, row) => {
+    clearSelectedDay();
+    displayHourlyData(data, order);
+    row.classList.add("selected-day");
+  };
 
   seeHourlyDataForDayBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      seeHourlyDataForDayBtns.forEach((btn) => {
-        btn.closest(".daily-weather-row").classList.remove("selected-day");
-      });
-
+    btn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const row = btn.closest(".daily-weather-row");
       const order = btn.dataset.dayOrder;
-      displayHourlyData(data, order);
+      handleDisplayHourlyData(order, row);
+    });
+  });
 
-      btn.closest(".daily-weather-row").classList.add("selected-day");
+  dailyWeatherRows.forEach((row) => {
+    row.addEventListener("click", () => {
+      const btn = row.querySelector(".see-hourly-data");
+      const order = btn ? btn.dataset.dayOrder : row.dataset.dayOrder;
+      handleDisplayHourlyData(order, row);
     });
   });
 };
 
-export { displayHourlyData, displayHourlyDataNotCurrentDay };
+const changeChartDaySelectedFromDropdown = (daySelected) => {};
+
+export {
+  displayHourlyData,
+  displayHourlyDataNotCurrentDay,
+  changeChartDaySelectedFromDropdown,
+};

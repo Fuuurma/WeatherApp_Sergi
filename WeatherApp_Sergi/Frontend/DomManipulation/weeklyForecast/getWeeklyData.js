@@ -1,5 +1,6 @@
 import { getImageForWeatherCode } from "../helpers/getWeatherCode.js";
 import { formatDayTitle } from "../helpers/helpers.js";
+import { changeChartDaySelectedFromDropdown } from "../hourlyData/getHourlyData.js";
 import {
   celsiusDegres,
   directionDegres,
@@ -33,6 +34,29 @@ const displayWeeklyWeather = (data) => {
     windImage.style.transform = `rotate(${day.windDirection}deg)`;
 
     date.innerHTML = formatDayTitle(day.date);
+  });
+  getDayOptionsOnChartDropdown(data);
+};
+
+const getDayOptionsOnChartDropdown = (days) => {
+  if (!days) return;
+  const chartDropdown = document.getElementById("chart-dropdown");
+  chartDropdown.innerHTML = "";
+
+  days.forEach((day, index) => {
+    const newListItem = document.createElement("li");
+    const newAnchor = document.createElement("a");
+    newAnchor.href = "#";
+    newAnchor.className = "dropdown-item";
+    newAnchor.textContent = formatDayTitle(day.date);
+    newListItem.dataset.dayToSelect = index;
+
+    newListItem.appendChild(newAnchor);
+    chartDropdown.appendChild(newListItem);
+
+    newListItem.addEventListener("click", () => {
+      changeChartDaySelectedFromDropdown(index);
+    });
   });
 };
 

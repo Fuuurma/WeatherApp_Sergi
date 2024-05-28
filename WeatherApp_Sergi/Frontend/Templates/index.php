@@ -230,7 +230,7 @@
 
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="1">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -254,7 +254,7 @@
                   <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="2">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -279,7 +279,7 @@
                   <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="3">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -305,7 +305,7 @@
                   <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="4">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -329,7 +329,7 @@
                   <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="5">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -353,7 +353,7 @@
                   <img src="../assets/images/weather_icons/direction.png" class="weekly-weather-wind-img card-img-top img-fluid w-25" alt="">
                 </div>
                 <div class="col-2 d-flex justify-content-center">
-                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="0">
+                  <button class="btn btn-sm see-hourly-data  btn-secondary rounded-pill shadow shadow-lg w-50" data-day-order="6">
                     <i class="bi bi-eye"></i>
                   </button>
                 </div>
@@ -738,8 +738,8 @@
 
       <div class="row m-4 w-75 mx-auto bg-dark rounded-3 text-light">
         <div class="container w-100 mx-auto mt-4 mb-2" id="chart-container">
-          <div class="row d-flex flex-nowrap align-items-center gap-2">
-            <div class="col-7 d-flex gap-2">
+          <div class="row d-flex flex-nowrap align-items-center justify-content-center gap-5">
+            <div class="col-5 d-flex gap-2">
               <input id="chart-searchLocation" class="search-input form-control bg-light bg-gradient w-75" type="search" placeholder="Search" aria-label="Search" list="suggestions" autocomplete="off" tabindex="1" style="flex: 1;">
               <button id="chart-search-location-btn" class="search-button btn btn-light" type="submit">Search</button>
             </div>
@@ -756,15 +756,15 @@
                 <label class="btn btn-outline-primary" for="wind">Wind</label>
               </div>
 
-              <div class="btn-group dropup">
+              <div class="btn-group dropup w-100">
                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   Day
                 </button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" id="chart-dropdown">
                   <!-- Dropdown menu links -->
-                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <!-- <li><a class="dropdown-item" href="#">Action</a></li>
                   <li><a class="dropdown-item" href="#">Action two</a></li>
-                  <li><a class="dropdown-item" href="#">Action three</a></li>
+                  <li><a class="dropdown-item" href="#">Action three</a></li> -->
                 </ul>
               </div>
             </div>
