@@ -1,6 +1,6 @@
 import { fetchMeteo } from "../meteoApi.js";
 import { updateDashboard } from "../dashboard/dashboards.js";
-import { getCurrentLocation } from "../main.js";
+import { getCurrentLocation } from "../locations.js";
 
 function getFavorites() {
   console.log("Getting favorites...");
@@ -24,6 +24,25 @@ function getFavorites() {
     .catch((error) => {
       console.log(error);
     });
+}
+
+function addFavoriteAction() {
+  const searchInput = document.querySelector("#searchLocation");
+  const location = searchInput.value;
+
+  getLocation(location)
+    .then((results) => {
+      if (results && results.length > 0) {
+        const result = results[0];
+        let favorite = {
+          name: result.name,
+          lat: result.latitude,
+          lon: result.longitude,
+        };
+        addFavorite(favorite);
+      } else console.log("No results found");
+    })
+    .catch((error) => console.log(error));
 }
 
 function addFavorite(favorite) {
@@ -205,4 +224,4 @@ function requestUploadPhoto() {
 //     });
 // }
 
-export { getFavorites, addFavorite, requestUploadPhoto };
+export { getFavorites, addFavorite, requestUploadPhoto, addFavoriteAction };

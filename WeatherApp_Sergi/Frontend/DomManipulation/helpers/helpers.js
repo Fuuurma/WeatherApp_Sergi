@@ -65,9 +65,36 @@ const AIR_QUALITY_THRESHOLDS = [
   { threshold: 999, class: "extremelyPoor", text: "Extremely Poor" },
 ];
 
+const searchInput = document.querySelector("#searchLocation");
+const chartSearchInput = document.querySelector("#chart-searchLocation");
+let clearInputs = () => {
+  searchInput.value = "";
+  chartSearchInput.value = "";
+};
+
+function checkAndDeleteGeoLocationIcon() {
+  const buttonContainer = document.getElementById("now-card-icons-container");
+  const existingButton = document.getElementById("geo-location-btn");
+  if (existingButton) buttonContainer.removeChild(existingButton);
+}
+
+function createGeoLocationButton() {
+  checkAndDeleteGeoLocationIcon();
+  const buttonContainer = document.getElementById("now-card-icons-container");
+  const geoLocationButton = document.createElement("button");
+  geoLocationButton.type = "button";
+  geoLocationButton.className = "btn btn-sm btn-secondary rounded-pill";
+  geoLocationButton.id = "geo-location-btn";
+  geoLocationButton.innerHTML = '<i class="bi bi-crosshair"></i>';
+  buttonContainer.appendChild(geoLocationButton);
+}
+
 export {
   formatDayTitle,
   formatHourlyTime,
   AIR_QUALITY_CLASSES,
   AIR_QUALITY_THRESHOLDS,
+  clearInputs,
+  checkAndDeleteGeoLocationIcon,
+  createGeoLocationButton,
 };

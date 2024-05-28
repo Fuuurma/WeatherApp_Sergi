@@ -41,19 +41,16 @@ const drawPlot = (time, data, plotType) => {
       break;
   }
 
-  // Remove any existing SVG element
   d3.select(selector).select("svg").remove();
 
   const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
 
-  // chart dimensions
   const chartWidth = 1000;
   const chartHeight = 300;
   const margin = { top: 40, right: 20, bottom: 30, left: 40 };
   const width = chartWidth - margin.left - margin.right;
   const height = chartHeight - margin.top - margin.bottom;
 
-  // Create the SVG element
   const svg = d3
     .select(selector)
     .append("svg")
@@ -67,33 +64,29 @@ const drawPlot = (time, data, plotType) => {
       "max-width: 100%; height: auto; height:intrinsic; width: auto;"
     );
 
-  // Create the tooltip div
-  const tooltipDiv = d3.select("#tooltip");
+  const tooltipDiv = d3.select("#tooltip").style("opacity", 0);
   const tooltip = tooltipDiv.append("div").attr("class", "tooltip");
 
-  // Create the scales
   const x = d3.scaleTime().range([0, width]);
   const y = d3.scaleLinear().range([height, 0]);
 
-  // Format the data
   const formattedData = data.map((value, index) => ({
+    // data
     time: parseTime(time[index]),
     value: value,
   }));
 
-  // Set the domains
+  // Rangos x, y
   const minValue = d3.min(formattedData, (d) => d.value);
   const maxValue = d3.max(formattedData, (d) => d.value);
   x.domain(d3.extent(formattedData, (d) => d.time));
   y.domain([minValue * 0.9, maxValue * 1.1]);
 
-  // Create the line generator
   const line = d3
     .line()
     .x((d) => x(d.time))
     .y((d) => y(d.value));
 
-  // Add the line path with gradient color and thickness
   svg
     .append("path")
     .datum(formattedData)
@@ -103,7 +96,7 @@ const drawPlot = (time, data, plotType) => {
     .attr("stroke-width", 2)
     .attr("fill", "none");
 
-  // Add the x axis
+  // Añade eje X
   svg
     .append("g")
     .attr("class", "x axis")
@@ -112,7 +105,7 @@ const drawPlot = (time, data, plotType) => {
     .style("opacity", "0.75")
     .call(d3.axisBottom(x));
 
-  // Add the y axis
+  // Añade eje Y
   svg
     .append("g")
     .attr("class", "y axis")
@@ -122,7 +115,7 @@ const drawPlot = (time, data, plotType) => {
       d3.axisLeft(y).tickFormat((d) => `${d.toFixed(0)}${measurementUnit()}`)
     );
 
-  // Add y axis label
+  // Y label
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
@@ -144,7 +137,6 @@ const drawPlot = (time, data, plotType) => {
   //   .style("opacity", "0.75")
   //   .text(plotTitle);
 
-  // Add gridlines
   const gridlines = svg
     .append("g")
     .attr("class", "grid")
@@ -160,7 +152,7 @@ const drawPlot = (time, data, plotType) => {
     .style("opacity", "0.25")
     .call(d3.axisBottom().scale(x).tickSize(-height, 0, 0).tickFormat(""));
 
-  // Add circles
+  // UI, Leyenda con valores respecto a la posicion del mouse.
   const circles = svg
     .selectAll(".dot")
     .data(formattedData)
@@ -171,11 +163,12 @@ const drawPlot = (time, data, plotType) => {
     .attr("cy", (d) => y(d.value))
     .attr("r", 5);
 
-  // Add listening rectangle
   const listeningRect = svg
     .append("rect")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .style("fill", "none")
+    .style("pointer-events", "all");
 
   listeningRect.on("mousemove", function (event) {
     const [xCoord] = d3.pointer(event, this);
@@ -188,14 +181,18 @@ const drawPlot = (time, data, plotType) => {
     const xPos = x(d.time);
     const yPos = y(d.value);
 
-    // Update the circle position
-    circles.attr("cx", xPos).attr("cy", yPos).attr("r", 5);
+    circles
+      .attr("cx", xPos)
+      .attr("cy", yPos)
+      .transition()
+      .duration(200)
+      .attr("r", 5)
+      .style("opacity", 1);
 
-    // Add transition for the circle radius
     circles.transition().duration(50).attr("r", 5);
 
-    // Add tooltip
     tooltipDiv
+      .style("opacity", 1) // Show tooltip
       .style("left", `${xPos}px`)
       .style("top", `calc(${yPos}px - 250px)`)
       .html(
@@ -210,13 +207,13 @@ const drawPlot = (time, data, plotType) => {
       );
   });
 
-  // listening rectangle mouse leave function
-  svg.on("mouseleave", function () {
-    circles.transition().duration(50).attr("r", 0);
-    tooltip.style("opacity", 0);
+  listeningRect.on("mouseleave", function () {
+    circles.transition().duration(500).attr("r", 0).style("opacity", 0);
+    tooltipDiv.transition().duration(500).style("opacity", 0);
   });
 };
 
+// Permite cambiar entre los 3 gráficos
 const togglePlots = () => {
   const chartDivs = {
     temperature: document.getElementById("temperature-chart"),
@@ -240,7 +237,7 @@ const togglePlots = () => {
   });
 };
 
-// Define gradients once in your script, outside of the drawPlot function
+// Gradients para los gráficos
 const defineGradients = () => {
   const svg = d3
     .select("body")
@@ -302,101 +299,5 @@ const defineGradients = () => {
     .attr("offset", (d) => d.offset)
     .attr("stop-color", (d) => d.color);
 };
-
-// let drawTemperaturePlot = (time, temperatures) => {
-//   const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
-//   // Set up the chart dimensions
-//   const chartWidth = 1000;
-//   const chartHeight = 300;
-//   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-//   const width = chartWidth - margin.left - margin.right;
-//   const height = chartHeight - margin.top - margin.bottom;
-
-//   // Create the SVG element
-//   const svg = d3
-//     .select("#chart")
-//     .append("svg")
-//     .attr("width", chartWidth)
-//     .attr("height", chartHeight)
-//     .append("g")
-//     .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-//   // Create the scales
-//   const x = d3.scaleTime().range([0, width]);
-//   const y = d3.scaleLinear().range([height, 0]);
-//   return;
-// };
-
-// let drawSurfacePressurePlot = (time, pressure) => {
-//   const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
-//   // Set up the chart dimensions
-//   const chartWidth = 1000;
-//   const chartHeight = 300;
-//   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-//   const width = chartWidth - margin.left - margin.right;
-//   const height = chartHeight - margin.top - margin.bottom;
-
-//   // Create the SVG element
-//   const svg = d3
-//     .select("#chart")
-//     .append("svg")
-//     .attr("width", chartWidth)
-//     .attr("height", chartHeight)
-//     .append("g")
-//     .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-//   // Create the scales
-//   const x = d3.scaleTime().range([0, width]);
-//   const y = d3.scaleLinear().range([height, 0]);
-//   return;
-// };
-
-// let drawPrecipitationPlot = (time, precipitation) => {
-//   const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
-//   // Set up the chart dimensions
-//   const chartWidth = 1000;
-//   const chartHeight = 300;
-//   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-//   const width = chartWidth - margin.left - margin.right;
-//   const height = chartHeight - margin.top - margin.bottom;
-
-//   // Create the SVG element
-//   const svg = d3
-//     .select("#chart")
-//     .append("svg")
-//     .attr("width", chartWidth)
-//     .attr("height", chartHeight)
-//     .append("g")
-//     .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-//   // Create the scales
-//   const x = d3.scaleTime().range([0, width]);
-//   const y = d3.scaleLinear().range([height, 0]);
-//   return;
-// };
-
-// let drawWindSpeedPlot = (time, windSpeed) => {
-//   const parseTime = d3.timeParse("%Y-%m-%dT%H:%M");
-//   // Set up the chart dimensions
-//   const chartWidth = 1000;
-//   const chartHeight = 300;
-//   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-//   const width = chartWidth - margin.left - margin.right;
-//   const height = chartHeight - margin.top - margin.bottom;
-
-//   // Create the SVG element
-//   const svg = d3
-//     .select("#chart")
-//     .append("svg")
-//     .attr("width", chartWidth)
-//     .attr("height", chartHeight)
-//     .append("g")
-//     .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-//   // Create the scales
-//   const x = d3.scaleTime().range([0, width]);
-//   const y = d3.scaleLinear().range([height, 0]);
-//   return;
-// };
 
 export { drawPlot, togglePlots, defineGradients };

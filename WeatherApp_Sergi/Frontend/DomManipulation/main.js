@@ -3,6 +3,10 @@ import { focusWindowOnChart } from "./drawPlots/focusOnChart.js";
 import { fetchMeteo } from "./meteoApi.js";
 import { manipulateData, updateLocationTitle } from "./manipulateData.js";
 import { refreshDashboard, refreshSuggestions } from "./refresh/refresh.js";
+import {
+  clearInputs,
+  checkAndDeleteGeoLocationIcon,
+} from "../DomManipulation/helpers/helpers.js";
 import { makeCardsMoveAndBeDraggable } from "../DomManipulation/helpers/makeCardsDraggble.js";
 import { getWikiResults } from "../DomManipulation/wikiresults/getWikiResults.js";
 import { signUpNewUser } from "../DomManipulation/auth/signUp.js";
@@ -11,6 +15,7 @@ import {
   getLocation,
   reverseGeocoding,
   defaultLocation,
+  getCurrentLocation,
 } from "./locations.js";
 
 import {
@@ -19,12 +24,14 @@ import {
   checkLogin,
   loggedIn,
   createUser,
+  setUserDashboard,
 } from "./auth/login.js";
 
 import {
   requestUploadPhoto,
   addFavorite,
   // refreshPhotos,
+  addFavoriteAction,
   getFavorites,
 } from "./favorites/favorites.js";
 
@@ -41,6 +48,7 @@ window.onload = () => {
   const searchInput = document.querySelector("#searchLocation");
   searchInput.addEventListener("input", refreshSuggestions);
   const searchBtn = document.querySelector("#search-location-btn");
+  // Búsqueda
   searchBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const location = searchInput.value;
@@ -51,10 +59,10 @@ window.onload = () => {
     getWikiResults(locationName);
     getGoogleResultsLocation(location);
     checkAndDeleteGeoLocationIcon();
-    searchInput.value = "";
-    chartSearchInput.value = "";
+    clearInputs();
   });
 
+  // Búsqueda por Input del gráfico
   const chartSearchInput = document.querySelector("#chart-searchLocation");
   chartSearchInput.addEventListener("input", refreshSuggestions);
   const chartSearchBtn = document.querySelector("#chart-search-location-btn");
@@ -69,12 +77,11 @@ window.onload = () => {
     getGoogleResultsLocation(location);
     focusWindowOnChart();
     checkAndDeleteGeoLocationIcon();
-    searchInput.value = "";
-    chartSearchInput.value = "";
+    clearInputs();
   });
 
-  defineGradients();
-  makeCardsMoveAndBeDraggable();
+  defineGradients(); // para el gráfico
+  makeCardsMoveAndBeDraggable(); // cards 24 horas
 
   document
     .getElementById("focus-on-chart-btn")
@@ -91,7 +98,7 @@ window.onload = () => {
     .addEventListener("click", requestLogout);
   document
     .querySelector("#add-favorite-btn")
-    .addEventListener("click", addFavoriteButton);
+    .addEventListener("click", addFavoriteAction);
   document
     .querySelector("#uploadPhotoModal")
     .addEventListener("show.bs.modal", uploadPhotoModalShow);
@@ -102,10 +109,9 @@ window.onload = () => {
     .querySelector(".show-photo-button")
     .addEventListener("click", showOffcanvas);
 
-  //Load default data
-  let result = setUserDashboard();
   getWikiResults();
   getFavorites();
+  let result = setUserDashboard();
 
   targetLocation = defaultLocation;
   setInterval(refreshDashboard(targetLocation), 5000);
@@ -113,9 +119,7 @@ window.onload = () => {
 
 function showOffcanvas(event) {
   event.preventDefault();
-
   // refreshPhotos(targetLocation);
-
   let offCanvas = new bootstrap.Offcanvas(
     document.querySelector("#offcanvasExample")
   );
@@ -129,81 +133,4 @@ function uploadPhotoModalShow() {
   document.querySelector("#photoLocation").value = targetLocation.name;
 }
 
-function addFavoriteButton() {
-  const searchInput = document.querySelector("#searchLocation");
-  const location = searchInput.value;
-
-  getLocation(location)
-    .then((results) => {
-      if (results && results.length > 0) {
-        const result = results[0];
-        let favorite = {
-          name: result.name,
-          lat: result.latitude,
-          lon: result.longitude,
-        };
-        addFavorite(favorite);
-      } else console.log("No results found");
-    })
-    .catch((error) => console.log(error));
-}
-
-function getCurrentLocation() {
-  navigator.geolocation.getCurrentPosition((position) => {
-    let newLocation = {};
-    newLocation.lon = position.coords.longitude;
-    newLocation.lat = position.coords.latitude;
-    // Reverse geocoding
-    reverseGeocoding(newLocation.lat, newLocation.lon)
-      .then((response) => response.json())
-      .then((data) => {
-        newLocation.name = data[0]["name"];
-        let locationNameConatiner = (document.getElementById(
-          "curent-location-value"
-        ).textContent = newLocation.name);
-        targetLocation = newLocation;
-        refreshDashboardReverseGeocoding(targetLocation);
-        createGeoLocationButton();
-
-        getWikiResults(data[0]["name"]);
-        getGoogleResultsLocation(data[0]["name"]);
-      });
-    newLocation.name = "";
-    newLocation.isFavorite = false;
-    targetLocation = newLocation;
-    refreshDashboard(targetLocation);
-  });
-}
-
-function checkAndDeleteGeoLocationIcon() {
-  const buttonContainer = document.getElementById("now-card-icons-container");
-  const existingButton = document.getElementById("geo-location-btn");
-  if (existingButton) buttonContainer.removeChild(existingButton);
-}
-
-function createGeoLocationButton() {
-  checkAndDeleteGeoLocationIcon();
-  const buttonContainer = document.getElementById("now-card-icons-container");
-  const geoLocationButton = document.createElement("button");
-  geoLocationButton.type = "button";
-  geoLocationButton.className = "btn btn-sm btn-secondary rounded-pill";
-  geoLocationButton.id = "geo-location-btn";
-  geoLocationButton.innerHTML = '<i class="bi bi-crosshair"></i>';
-  buttonContainer.appendChild(geoLocationButton);
-}
-
-function refreshDashboardReverseGeocoding(location) {
-  console.log("location", location);
-  const latitude = location.lat;
-  const longitude = location.lon;
-  // updateLocationTitle(location);
-  fetchMeteo(latitude, longitude);
-}
-
-async function setUserDashboard() {
-  checkLogin();
-}
-
-function unsetUserDashboard() {}
-
-export { getCurrentLocation };
+// function unsetUserDashboard() {}

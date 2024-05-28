@@ -1,3 +1,13 @@
+import {
+  checkAndDeleteGeoLocationIcon,
+  createGeoLocationButton,
+} from "./helpers/helpers.js";
+
+import { getGoogleResultsLocation } from "./googleResults/getGoogleResults.js";
+import { getWikiResults } from "./wikiresults/getWikiResults.js";
+import { refreshDashboard } from "./refresh/refresh.js";
+import { fetchMeteo } from "./meteoApi.js";
+
 function fetchLocation(location) {
   // if (!location) {
   //   return;
@@ -89,10 +99,46 @@ const defaultLocation = [
   },
 ];
 
+function getCurrentLocation() {
+  navigator.geolocation.getCurrentPosition((position) => {
+    let newLocation = {};
+    newLocation.lon = position.coords.longitude;
+    newLocation.lat = position.coords.latitude;
+    // Reverse geocoding
+    reverseGeocoding(newLocation.lat, newLocation.lon)
+      .then((response) => response.json())
+      .then((data) => {
+        newLocation.name = data[0]["name"];
+        let locationNameConatiner = (document.getElementById(
+          "curent-location-value"
+        ).textContent = newLocation.name);
+        targetLocation = newLocation;
+        refreshDashboardReverseGeocoding(targetLocation);
+        createGeoLocationButton();
+
+        getWikiResults(data[0]["name"]);
+        getGoogleResultsLocation(data[0]["name"]);
+      });
+    newLocation.name = "";
+    newLocation.isFavorite = false;
+    targetLocation = newLocation;
+    refreshDashboard(targetLocation);
+  });
+}
+
+function refreshDashboardReverseGeocoding(location) {
+  console.log("location", location);
+  const latitude = location.lat;
+  const longitude = location.lon;
+  // updateLocationTitle(location);
+  fetchMeteo(latitude, longitude);
+}
+
 export {
   fetchLocation,
   updateSuggestions,
   getLocation,
   reverseGeocoding,
   defaultLocation,
+  getCurrentLocation,
 };

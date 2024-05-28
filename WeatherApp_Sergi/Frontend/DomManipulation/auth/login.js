@@ -2,6 +2,11 @@ import { getFavorites } from "../favorites/favorites.js";
 
 let loggedIn = false;
 
+async function setUserDashboard() {
+  const result = await checkLogin();
+  return result;
+}
+
 function checkLogin() {
   console.log("Checking session...");
   const formData = new URLSearchParams();
@@ -24,6 +29,7 @@ function checkLogin() {
         document.getElementById("welcome-user").style.display = "inline";
         document.getElementById("user-name").innerText = data;
         document.getElementById("logout-link").style.display = "inline";
+        return true;
       } else {
         loggedIn = false;
         document.querySelector(".user-menu button").disabled = true;
@@ -32,6 +38,7 @@ function checkLogin() {
         document.getElementById("signup-link").style.display = "inline";
         document.getElementById("welcome-user").style.display = "none";
         document.getElementById("logout-link").style.display = "none";
+        return null;
       }
     })
     .catch((error) => {
@@ -127,4 +134,11 @@ function createUser() {
     });
 }
 
-export { requestLogin, requestLogout, checkLogin, loggedIn, createUser };
+export {
+  requestLogin,
+  requestLogout,
+  checkLogin,
+  loggedIn,
+  createUser,
+  setUserDashboard,
+};
