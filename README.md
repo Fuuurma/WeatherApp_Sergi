@@ -27,12 +27,19 @@ Lo actualizaré y corregiré (1/2 dias max) estos errores pero a dia de entrega 
 - Vista horária de cada dia de la semana en esa ubicación en las cards (son scrolleables).
 - Gráficos diários de la Temperatura, Viento y Precipitaciones\* con la libraría D3.js https://d3js.org/
 - Dom Manipulation al hacer la busqueda de ubicación, llevar cada dato a su sitio.
+- Top 3 results de Google de cada búsqueda.
+- Artículo de cada búsqueda con Wikipedia API.
+- Auth (SignIn, Login, Logout)
+- favorites.
+- Geolocation.
 
 ## TO DO:
 
 - Añadir el gráfico de precipitación. Actualmente usa dirección del viento.
 - Añadir correctamente los favorites y su búsqueda.
 - Funcionalidad Upload Photos
-- Eliminar favorites y busqueda de favorites onClick
-- Wiki facts
+- Width maximo = 100vw
+- Dropdown select day funcionalidad
+- Tooltip display none cuando !hoover
+- Did you know UI
 - Update readme.
