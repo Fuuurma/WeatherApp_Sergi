@@ -114,10 +114,21 @@ const updateLocationTitle = (location) => {
   const locationName = location[0]?.name || "";
   const province = location[0]?.admin1 || "";
   const country = location[0]?.country || "";
-  document.getElementById(
+
+  const formattedLocation = `${locationName},${
+    province ? `<br>${province},` : ""
+  }${country ? `<br>${country}` : ""}`;
+
+  const currentLocationElement = document.getElementById(
     "curent-location-value"
-  ).textContent = `${locationName}, ${province}, ${country}`;
-  const chartTitle = document.getElementById("hourly-data-location-title");
-  chartTitle.textContent = `${locationName}, ${province}, ${country}`;
+  );
+  const chartTitle = `${locationName}, ${province}, ${country}`;
+  const chartTitleElement = document.getElementById(
+    "hourly-data-location-title"
+  );
+
+  currentLocationElement.innerHTML = formattedLocation;
+  chartTitleElement.innerHTML = chartTitle;
 };
+
 export { manipulateData, updateLocationTitle };

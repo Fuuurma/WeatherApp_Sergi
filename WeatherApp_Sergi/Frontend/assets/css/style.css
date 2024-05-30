@@ -45,6 +45,11 @@
   --chart-text: #f0ead6;
 }
 
+html,
+body {
+  overflow-x: hidden !important;
+}
+
 /* CSS for radio button group */
 .btn-group input[type="radio"] {
   display: none;

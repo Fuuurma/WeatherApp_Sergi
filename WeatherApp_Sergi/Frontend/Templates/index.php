@@ -123,7 +123,7 @@
             </div>
 
             <span class="h2 card-text-ara card-text w-75 m-2" id="curent-location-value"></span>
-            <div class="d-flex flex-row justify-content-evenly align-items-center mb-5">
+            <div class="d-flex flex-row justify-content-evenly align-items-center mt-2 mb-5">
               <div class="col-6">
                 <div class="row m-2">
                   <span class="h4 card-text-resum card-text ps-0" id="current-weather-code-description"></span>
@@ -818,15 +818,15 @@
   <!-- OFFCANVAS INTERESTING FACTS LOCATION-->
   <div class="offcanvas offcanvas-start w-25 d-flex flex-column bg-black bg-gradient" tabindex="-2" id="off-canvas-facts" aria-labelledby="off-canvas-facts" data-bs-theme="dark">
     <div class="offcanvas-header mb-0 flex-shrink-0">
-      <h5 class="offcanvas-title bg-dark mx-5 mb-2 p-3 rounded" id="off-canvas-title"></h5>
+      <h5 class="offcanvas-title bg-dark mx-5 mb-2 p-3 w-100 rounded text-center" id="off-canvas-title"></h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" tabindex="1"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column flex-grow-1 p-0">
-      <div id="facts-container" class="flex-grow-1 overflow-auto p-3">
+      <div id="facts-container" class="flex-grow-1 overflow-auto ">
         <!-- Facts will be injected here -->
       </div>
       <div class="flex-grow-1 d-flex flex-column">
-        <div class="col bg-dark mx-5 my-2 p-3 align-items-center rounded">
+        <div class="col bg-dark mx-3 my-2 p-3 align-items-center rounded">
           <div class="h3">See also</div>
           <div id="search-results" class="overflow-auto">
             <div class="loader spinner-grow text-primary" role="status">

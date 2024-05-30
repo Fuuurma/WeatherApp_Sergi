@@ -101,6 +101,7 @@ const defaultLocation = [
 
 function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition((position) => {
+    let targetLocation;
     let newLocation = {};
     newLocation.lon = position.coords.longitude;
     newLocation.lat = position.coords.latitude;

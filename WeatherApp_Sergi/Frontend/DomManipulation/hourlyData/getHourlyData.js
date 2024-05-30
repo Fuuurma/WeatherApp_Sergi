@@ -7,13 +7,14 @@ const displayHourlyData = (data, dayWanted) => {
   const cardPrevisionCards = document.querySelectorAll(
     ".card-previsio-per-hores"
   );
+  // console.log("all: ", data);
 
   if (dayWanted) {
     // display the data based on the # day
     let index = 0;
 
     drawPlot(data[dayWanted].date, data[dayWanted].temperature, "temperature");
-    drawPlot(data[dayWanted].date, data[dayWanted].windDirection, "rain");
+    drawPlot(data[dayWanted].date, data[dayWanted].precipitation, "rain");
     drawPlot(data[dayWanted].date, data[dayWanted].windSpeed, "wind");
 
     // Update the hourly cards with the data for the first day
@@ -46,7 +47,7 @@ const displayHourlyData = (data, dayWanted) => {
     // display day #0
     let index = 0;
     drawPlot(data[0].date, data[0].temperature, "temperature");
-    drawPlot(data[0].date, data[0].windDirection, "rain");
+    drawPlot(data[0].date, data[0].precipitation, "rain");
     drawPlot(data[0].date, data[0].windSpeed, "wind");
 
     cardPrevisionCards.forEach((hourlyCard) => {

@@ -14,14 +14,13 @@ let getWikiResults = (location) => {
       const title = data.title;
       const extract = data.extract;
 
-      // Truncate the extract to a certain length
-      const maxTextLength = 750;
+      // Truncate to a certain length
+      const maxTextLength = 1500;
       const truncatedExtract =
         extract.length > maxTextLength
           ? extract.substring(0, maxTextLength) + "..."
           : extract;
 
-      // Split the extract into sentences, ensuring it doesn't split on decimal points
       const sentences = truncatedExtract.match(/[^.!\?]+[a-zA-Z]\. /g) || [
         truncatedExtract,
       ];
@@ -30,16 +29,14 @@ let getWikiResults = (location) => {
       const factsContainer = document.getElementById("facts-container");
       const factsLocationTitle = document.getElementById("off-canvas-title");
 
-      // Clear previous content
       factsContainer.innerHTML = "";
       factsLocationTitle.innerText = "";
 
-      // Set new content
       factsLocationTitle.innerText = title;
 
       const factDiv = document.createElement("div");
       factDiv.className =
-        "col bg-dark mx-5 my-2 p-3 align-items-center rounded truncated-text";
+        "col bg-dark mx-3 my-2 p-3 align-items-center rounded truncated-text";
       factsContainer.appendChild(factDiv);
 
       sentences.forEach((sentence) => {

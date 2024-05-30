@@ -161,8 +161,10 @@ const drawPlot = (time, data, plotType) => {
     .attr("class", "dot")
     .attr("cx", (d) => x(d.time))
     .attr("cy", (d) => y(d.value))
-    .attr("r", 5);
+    .attr("r", 0) // Initial radius is 0 to hide them initially
+    .style("opacity", 0); // Initial opacity is 0 to hide them initially
 
+  // Add listening rectangle
   const listeningRect = svg
     .append("rect")
     .attr("width", width)
@@ -181,6 +183,7 @@ const drawPlot = (time, data, plotType) => {
     const xPos = x(d.time);
     const yPos = y(d.value);
 
+    // Show the circle and update its position
     circles
       .attr("cx", xPos)
       .attr("cy", yPos)
@@ -189,8 +192,7 @@ const drawPlot = (time, data, plotType) => {
       .attr("r", 5)
       .style("opacity", 1);
 
-    circles.transition().duration(50).attr("r", 5);
-
+    // Show the tooltip
     tooltipDiv
       .style("opacity", 1) // Show tooltip
       .style("left", `${xPos}px`)
@@ -205,6 +207,10 @@ const drawPlot = (time, data, plotType) => {
             : "N/A"
         }`
       );
+  });
+
+  listeningRect.on("mouseenter", function () {
+    circles.transition().duration(500).attr("r", 5).style("opacity", 1);
   });
 
   listeningRect.on("mouseleave", function () {
