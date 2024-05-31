@@ -2,6 +2,7 @@ import { getImageForWeatherCode } from "../helpers/getWeatherCode.js";
 import { formatDayTitle, formatHourlyTime } from "../helpers/helpers.js";
 import { drawPlot } from "../drawPlots/drawPlots.js";
 import { celsiusDegres, windSpeed } from "../helpers/getMeasurementUnits.js";
+import { focusOnCards } from "../drawPlots/focusOnChart.js";
 
 const displayHourlyData = (data, dayWanted) => {
   const cardPrevisionCards = document.querySelectorAll(
@@ -95,6 +96,7 @@ const displayHourlyDataNotCurrentDay = (data) => {
       const row = btn.closest(".daily-weather-row");
       const order = btn.dataset.dayOrder;
       handleDisplayHourlyData(order, row);
+      focusOnCards();
     });
   });
 
@@ -103,6 +105,7 @@ const displayHourlyDataNotCurrentDay = (data) => {
       const btn = row.querySelector(".see-hourly-data");
       const order = btn ? btn.dataset.dayOrder : row.dataset.dayOrder;
       handleDisplayHourlyData(order, row);
+      focusOnCards();
     });
   });
 };

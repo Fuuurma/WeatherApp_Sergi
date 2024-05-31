@@ -1,6 +1,7 @@
 import { fetchMeteo } from "../meteoApi.js";
 import { updateDashboard } from "../dashboard/dashboards.js";
-import { getCurrentLocation } from "../locations.js";
+import { getCurrentLocation, getLocation } from "../locations.js";
+import { updateLocationTitle } from "../manipulateData.js";
 
 function getFavorites() {
   console.log("Getting favorites...");
@@ -27,9 +28,7 @@ function getFavorites() {
 }
 
 function addFavoriteAction() {
-  const searchInput = document.querySelector("#searchLocation");
-  const location = searchInput.value;
-
+  const location = document.getElementById("curent-location-value").innerText;
   getLocation(location)
     .then((results) => {
       if (results && results.length > 0) {
@@ -114,7 +113,7 @@ function createNewFavoriteItem(favorite) {
   newAnchor.setAttribute("lon", favorite.lon);
   newAnchor.setAttribute("lat", favorite.lat);
   newAnchor.style.cursor = "pointer";
-  newAnchor.addEventListener("click", () => fetchFavorite(favorite));
+  newAnchor.addEventListener("click", (e) => fetchFavorite(e));
 
   let newItem = document.createElement("li");
   newItem.append(newAnchor);
@@ -124,13 +123,13 @@ function createNewFavoriteItem(favorite) {
 }
 
 function fetchFavorite(event) {
-  console.log(event.target);
   let location = {
-    name: "",
+    name: event.target.innerText,
     lat: event.target.getAttribute("lat"),
     lon: event.target.getAttribute("lon"),
   };
-  fetchMeteo(location);
+  updateLocationTitle(location);
+  fetchMeteo(location.lat, location.lon);
   // .then((response) => response.json())
   // .then((data) => {
   //   // console.log(data)

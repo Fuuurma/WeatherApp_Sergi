@@ -108,7 +108,7 @@
     <div class="row mt-3 ms-3">
       <!-- LEFT SIDE CARDS -->
       <!-- BRIEFING CARDS -->
-      <div class="col-4 col-md-3 d-flex flex-column row-gap-1 justify-content-start align-items-start">
+      <div class="col-12 col-lg-3 d-flex flex-column row-gap-1 justify-content-start align-items-start">
 
         <!-- Card Ara-->
         <div class="card-ara card bg-dark bg-gradient w-100 text-light mb-3">
@@ -170,7 +170,7 @@
 
 
       <!-- RIGHT SIDE CARDS -->
-      <div class="col-8 col-md-9 d-flex flex-column justify-content-start align-items-center gap-4">
+      <div class="col-12 col-lg-9 d-flex flex-column justify-content-start align-items-center gap-4">
         <div class="card-briefing container-fluid d-flex flex-row gap-2 flex-wrap justify-content-between w-100">
           <!-- Card Previsió 7 dies-->
 
@@ -366,9 +366,9 @@
 
 
 
-      <div class="row d-flex flex-row my-3">
+      <div class="row d-flex flex-column my-3 flex-lg-row">
 
-        <div class="col-12 d-flex flex-row gap-3">
+        <div class="col-12 d-flex flex-column gap-3 flex-lg-row">
           <!-- AIR QUALITY -->
           <div class="card-qualitat-aire card bg-dark bg-gradient w-100 text-light p-0">
             <div class="card-body d-flex flex-column p-2 justify-content-center">
@@ -482,7 +482,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" id="cards-hourly-row">
         <div class="container-fluid overflow-hidden">
           <div class="card-previsio-horaria row flex-nowrap overflow-auto gap-1">
             <!-- <div
@@ -738,7 +738,7 @@
 
       <div class="row m-4 w-75 mx-auto bg-dark rounded-3 text-light">
         <div class="container w-100 mx-auto mt-4 mb-2" id="chart-container">
-          <div class="row d-flex flex-nowrap align-items-center justify-content-center gap-5">
+          <div class="row d-flex flex-nowrap align-items-center justify-content-center gap-5 mb-2">
             <div class="col-5 d-flex gap-2">
               <input id="chart-searchLocation" class="search-input form-control bg-light bg-gradient w-75" type="search" placeholder="Search" aria-label="Search" list="suggestions" autocomplete="off" tabindex="1" style="flex: 1;">
               <button id="chart-search-location-btn" class="search-button btn btn-light" type="submit">Search</button>

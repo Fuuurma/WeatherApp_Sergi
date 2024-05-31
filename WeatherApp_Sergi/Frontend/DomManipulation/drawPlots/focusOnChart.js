@@ -5,4 +5,11 @@ function focusWindowOnChart() {
   }
 }
 
-export { focusWindowOnChart };
+let focusOnCards = () => {
+  const cards = document.getElementById("cards-hourly-row");
+  if (cards) {
+    cards.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+};
+
+export { focusWindowOnChart, focusOnCards };
